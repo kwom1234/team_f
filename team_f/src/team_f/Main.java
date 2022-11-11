@@ -7,6 +7,7 @@ public class Main {
 		System.out.println("189142조유송");
 		System.out.println("213627최태양");
 		System.out.println("213621장성균");
+		System.out.println("213621장성균");
 
 	}
 
