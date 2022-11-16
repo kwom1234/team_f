@@ -8,7 +8,9 @@ public class Main {
 		System.out.println("213627최태양");
 		System.out.println("213621장성균");
 		System.out.println("213621장성균");
-
+		new MainFrame();
+		
+		//왜 커밋이 안되는 것이지?
 	}
 
 }
