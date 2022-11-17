@@ -9,7 +9,7 @@ public class Stage {
 	Image back;
 	Image Load;
 	int setting = 0;
-	int[][] mapdata = new int[16][24]; //흙 위치 (현제는 모두 0)
+	int[][] mapdata = new int[16][24]; //흙 위치- 게임 재시작하거나 맵 변경시 다시 0으로 초기화할것
 	Screen screen;
 	public Stage(){
 	back	= new ImageIcon(getClass().getClassLoader().getResource("Resource/jandy-2.png")).getImage();
@@ -43,9 +43,6 @@ public class Stage {
 		for(int i=0;i<14;i++) {
 			mapdata[7][i]=1;
 		}
-
-
-		
 		}
 		//길 그리는 부분
 		for(int i =0; i<24;i++) {
