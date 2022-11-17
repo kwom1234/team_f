@@ -41,9 +41,10 @@ public class Screen extends Canvas implements Runnable{
 		g.drawImage(offscreen, 0, 0, this);
 	}
 	public void render(Graphics g) {
-		g.clearRect(0, 0, 1050, 650);
+		g.clearRect(0, 0, 720, 480);
 		//배경
 		map.background(g);
+		map.map(g);
 			}
 	@Override
 	public void run() {

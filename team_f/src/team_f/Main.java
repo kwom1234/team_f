@@ -1,5 +1,7 @@
 package team_f;
 
+import java.awt.EventQueue;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -8,9 +10,16 @@ public class Main {
 		System.out.println("213627최태양");
 		System.out.println("213621장성균");
 		System.out.println("213621장성균");
-		new MainFrame();
-		
-		//왜 커밋이 안되는 것이지?
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame window = new MainFrame();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 }
