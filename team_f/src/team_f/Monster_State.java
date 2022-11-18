@@ -1,5 +1,9 @@
 package team_f;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class Monster_State {
 	public int width = 0;
 	public int height = 0;
@@ -14,7 +18,7 @@ public class Monster_State {
 	public int Drop =10;
 	public boolean stop = false;
 	public boolean fristCheck = false;
-	
+	Image Load = new ImageIcon(getClass().getClassLoader().getResource("Resource/monster1.png")).getImage();
 	public void clear() {
 		this.fristCheck = false;
 	}
