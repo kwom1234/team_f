@@ -12,6 +12,7 @@ public class Stage {
 	int[][] mapdata = new int[16][24]; //흙 위치- 게임 재시작하거나 맵 변경시 다시 0으로 초기화할것
 	Screen screen;
 	public static int mobNumber;
+	public static int[][] next;
 	public Stage(){
 	back	= new ImageIcon(getClass().getClassLoader().getResource("Resource/jandy-2.png")).getImage();
 	Load = new ImageIcon(getClass().getClassLoader().getResource("Resource/load.png")).getImage();
@@ -41,11 +42,16 @@ public class Stage {
 		mapdata[5][14]=1;
 		mapdata[6][14]=1;
 		mapdata[7][14]=1;
+		
 		for(int i=0;i<14;i++) {
 			mapdata[7][i]=1;
 		}
+		next=new int[29][2];// 객체의 갯수는 길의 갯수와 x,y이동좌표가 들어갈 것
+		
 		}
-		int[][] next=new int[29][2];// 객체의 갯수는 길의 갯수와 x,y이동좌표가 들어갈 것
+		if(setting==1) {
+			//맵 /2
+		}
 		//길 그리는 부분
 		int count=0;
 		for(int i =0; i<24;i++) {
