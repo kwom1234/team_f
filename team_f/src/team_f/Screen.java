@@ -19,10 +19,34 @@ public class Screen extends Canvas implements Runnable{
 	public static Dimension dim;
 	public static Image offscreen;
 	public static Graphics bufferGraphics;
+	private Monster_basic basic = new Monster_basic();
+	
+	
+	
 	Stage map = new Stage();
 	//ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public Screen() {
-
+		basic.setPosition(450, 450, true);
+		
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				repaint();
+				counting();
+			}
+		}, 0, 1);
+	}
+	
+	private int countNumber = 0;
+	public void counting() {
+		this.countNumber++;
+	}
+	
+	public int getCount() {
+		return this.countNumber;
 	}
 
 	//더블 버퍼링
@@ -31,6 +55,7 @@ public class Screen extends Canvas implements Runnable{
 		// TODO Auto-generated method stub
 		offscreen = createImage(1050, 650);
 		bufferGraphics = offscreen.getGraphics();
+		basic.draw(bufferGraphics, this);
 		update(g);
 	}
 	//더블 버퍼링
