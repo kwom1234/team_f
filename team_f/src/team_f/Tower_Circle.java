@@ -19,7 +19,7 @@ public class Tower_Circle extends Tower_State{
 		
 		 index_x = 0;
 		 index_y = 0;
-		start_x = 32;
+		start_x = 32;//그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
 		 Power=0;
