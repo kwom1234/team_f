@@ -65,10 +65,10 @@ public class Tower_Circle extends Tower_State{
 	public void drawTower(Graphics g) {
 		g.drawImage(tower, 
 				0, 0,  //위치 
-				0 + width, 0 + height, //크기 
+				0 + width+50, 0 + height+50, //크기 
 				width*index_x + start_x, 
 				height*index_y + start_y, 
-				width*index_x + start_x + width, 
+				width*index_x+ + start_x + width, 
 				height*index_y + start_y + height, 
 				screen);
 	}

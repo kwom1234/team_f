@@ -4,15 +4,17 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
+import java.awt.Canvas;
 import team_f.Screen;
 import java.awt.BorderLayout;
 import javax.swing.JToolBar;
+import team_f.LoadScreen;
 
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
@@ -22,31 +24,192 @@ import java.awt.event.MouseEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.border.LineBorder;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollBar;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class MainFrame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -7314136332860432911L;
 	private Screen screen;
 	public static JFrame frame;
-
-
-
+	public static JFrame Start;
+	private LoadScreen loadscreen;
+	private JButton gameStart;
+	private JTextField difficulty;
+	private JTextField textField;
+	public static int Setting;
 
 	/**
 	 * Create the application.
 	 */
 	public MainFrame() {
 		this.screen = new Screen();
-		initialize();
+		this.loadscreen=new LoadScreen();
+		startImage();
+		
+		
+		
+		
+		
+		//initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	private void startImage() {
+		Start = new JFrame();
+		Start.setTitle("타워디펜스");
+		Start.setBounds(100, 100, 720, 640);
+		Start.getContentPane().add(loadscreen,BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		Start.getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		gameStart = new JButton("게임 시작");
+		gameStart.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					
+					public void run() {
+						try {				
+							Setting = Integer.parseInt(difficulty.getText());
+							System.out.println(Setting);
+							if(Setting>=0&&Setting<=6) {
+							screen.Setting(Setting);
+							Start.dispose();
+							MainFrame window = new MainFrame();
+							window.frame.setVisible(true);}
+							else {
+								JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+
+							}
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+							e.printStackTrace();
+						}
+					}
+				});
+				initialize();
+				
+			}
+		});
+		
+		difficulty = new JTextField();
+		difficulty.setHorizontalAlignment(SwingConstants.RIGHT);
+		difficulty.setFont(new Font("굴림", Font.BOLD, 28));
+		difficulty.setText("0");
+		difficulty.setColumns(10);
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setEditable(false);
+		textField.setFont(new Font("굴림", Font.BOLD, 15));
+		textField.setText("난이도 설정(0~6)");
+		textField.setColumns(10);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(196, Short.MAX_VALUE)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+					.addGap(71)
+					.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(22, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+						.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+					.addGap(19))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(44)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(69, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+		Start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+	}
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().add(screen,BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.GREEN);
+		frame.getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		JButton btnNewButton_1 = new JButton("스킬 사용");
+		
+		JButton btnNewButton_2 = new JButton("포탑 강화");
+		
+		JButton btnNewButton = new JButton("포탑 설치");
+		
+		JPanel panel_1 = new JPanel();
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton)
+						.addComponent(btnNewButton_2)
+						.addComponent(btnNewButton_1))
+					.addGap(18)
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_1, 0, 0, Short.MAX_VALUE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnNewButton)
+							.addGap(18)
+							.addComponent(btnNewButton_2)
+							.addGap(18)
+							.addComponent(btnNewButton_1)))
+					.addContainerGap())
+		);
+		
+		ImageIcon iconClose = new ImageIcon(getClass().getClassLoader().getResource("Resource/tower.png"));
+		iconClose = new ImageIcon(
+		iconClose.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH));
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 571, Short.MAX_VALUE)
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 143, Short.MAX_VALUE)
+		);
+		panel_1.setLayout(gl_panel_1);
+		panel.setLayout(gl_panel);
 		frame.setTitle("타워디펜스");
-		frame.setBounds(100, 100, 720, 480);
+		frame.setBounds(100, 100, 720, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -55,7 +218,4 @@ public class MainFrame extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
 }

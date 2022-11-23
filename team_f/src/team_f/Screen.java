@@ -18,15 +18,12 @@ public class Screen extends Canvas implements Runnable{
 	private static final long serialVersionUID = -7314136332860432911L;
 	public static Dimension dim;
 	public static Image offscreen;
-	public static Graphics bufferGraphics;
-	private Monster_basic basic = new Monster_basic();
+	public static Graphics bufferGraphics;	
 	
-	
-	
+	Tower_Circle Tcircle= new Tower_Circle(); 
 	Stage map = new Stage();
 	//ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public Screen() {
-		basic.setPosition(450, 450, true);
 		
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -55,7 +52,6 @@ public class Screen extends Canvas implements Runnable{
 		// TODO Auto-generated method stub
 		offscreen = createImage(1050, 650);
 		bufferGraphics = offscreen.getGraphics();
-		basic.draw(bufferGraphics, this);
 		update(g);
 	}
 	//더블 버퍼링
@@ -86,6 +82,10 @@ public class Screen extends Canvas implements Runnable{
 			e.printStackTrace();
 		}
 		
+	}
+	//세팅값 지정
+	public void Setting(int a) {
+		map.setting = a;
 	}
 
 	

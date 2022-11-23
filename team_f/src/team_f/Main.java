@@ -14,7 +14,7 @@ public class Main {
 			public void run() {
 				try {
 					MainFrame window = new MainFrame();
-					window.frame.setVisible(true);
+					window.Start.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
