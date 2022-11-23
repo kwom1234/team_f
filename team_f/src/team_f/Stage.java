@@ -52,7 +52,6 @@ public class Stage {
 
 		}
 		if (setting == 1) {
-			System.out.println("세팅 1번");
 			// 맵 /2
 		}
 		// 길 그리는 부분
