@@ -58,14 +58,14 @@ public class MainFrame extends JFrame implements ActionListener {
 	 */
 	public MainFrame() {
 		this.screen = new Screen();
-		this.loadscreen=new LoadScreen();
+	/*	this.loadscreen=new LoadScreen();
 		startImage();
 		
+		*/
 		
 		
 		
-		
-		//initialize();
+		initialize();
 	}
 
 	/**
@@ -164,7 +164,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		JButton btnNewButton_2 = new JButton("포탑 강화");
 		
 		JButton btnNewButton = new JButton("포탑 설치");
-		
 		JPanel panel_1 = new JPanel();
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -197,14 +196,43 @@ public class MainFrame extends JFrame implements ActionListener {
 		ImageIcon iconClose = new ImageIcon(getClass().getClassLoader().getResource("Resource/tower.png"));
 		iconClose = new ImageIcon(
 		iconClose.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH));
+		
+		JButton btnNewButton_3 = new JButton("New button");
+		
+		JButton btnNewButton_4 = new JButton("New button");
+		
+		JButton btnNewButton_5 = new JButton("New button");
+		
+		JButton btnNewButton_6 = new JButton("New button");
+		
+		JButton btnNewButton_7 = new JButton("New button");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 571, Short.MAX_VALUE)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton_3)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNewButton_4)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNewButton_5)
+					.addGap(18)
+					.addComponent(btnNewButton_6)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNewButton_7)
+					.addContainerGap(38, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 143, Short.MAX_VALUE)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnNewButton_7, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_6, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_5, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnNewButton_3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+					.addContainerGap(18, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		panel.setLayout(gl_panel);

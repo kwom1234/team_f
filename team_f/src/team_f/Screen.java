@@ -20,8 +20,11 @@ public class Screen extends Canvas implements Runnable{
 	public static Image offscreen;
 	public static Graphics bufferGraphics;	
 	
+	
+	
 	Tower_Circle Tcircle= new Tower_Circle(); 
 	Stage map = new Stage();
+	Monster_1 mob = new Monster_1();
 	//ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public Screen() {
 		
@@ -66,6 +69,7 @@ public class Screen extends Canvas implements Runnable{
 		//배경
 		map.background(g);
 		map.map(g);
+		mob.drawMonster(g,this);
 			}
 	@Override
 	public void run() {

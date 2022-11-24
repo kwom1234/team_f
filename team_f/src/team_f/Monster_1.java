@@ -1,4 +1,5 @@
 package team_f;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,22 +14,23 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-public class Tower_Circle extends Tower_State{
-	
-	public Tower_Circle(){
+
+public class Monster_1 extends Monster_State{
+
+	public Monster_1(){
 		
 		 index_x = 0;
 		 index_y = 0;
-		start_x = 32;//그림상의 좌표
+		start_x = 0;//그림상의 좌표
 		start_y = 0;
-		frame_size = 0;
+		frame_size = 6;
 		 Power=0;
 		Speed= 0;
 		stop = false;
 		
 			try {
-				tower = ImageIO.read(new File("team_f/src/Resource/tower.png"));
-				tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+				mob = ImageIO.read(new File("team_f/src/Resource/monster-1.png"));
+				mob = TransformColorToTransparency(mob, new Color(45, 86, 56));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,14 +62,28 @@ public class Tower_Circle extends Tower_State{
 			g.dispose();
 			return dest;
 		}
-	public void drawTower(Graphics g) {
-		g.drawImage(tower, 
+	public void drawMonster(Graphics g, Screen screen) {
+		g.drawImage(mob, 
 				0, 0,  //위치 
-				0 + width+50, 0 + height+50, //크기 
+				0 + width+30, 0 + height+30, //크기 
 				width*index_x + start_x, 
 				height*index_y + start_y, 
 				width*index_x+ + start_x + width, 
 				height*index_y + start_y + height, 
 				screen);
+		if(screen.getCount() % 100 == 0)
+		{
+			if(index_x < frame_size-1)
+			{
+				index_x++;
+			}
+			else
+			{
+				if(!stop)
+					index_x = 0;
+				else
+					index_x = frame_size-1;
+			}
+		}
 	}
 }
