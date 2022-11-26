@@ -35,14 +35,22 @@ public class Screen extends Canvas implements Runnable{
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				move.MovePoint();
 				repaint();
-				counting();
-				
+				counting();				
 			}
-		}, 0, 500);
-	}
+		}, 0, 1);
+		Timer MoveTimer = new Timer();
+		MoveTimer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				move.MovePoint();
+			}
+		}, 0, 10);
 	
+	}
+
 	private int countNumber = 0;
 	public void counting() {
 		this.countNumber++;
