@@ -152,6 +152,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 	}
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.getContentPane().add(screen,BorderLayout.CENTER);
 		

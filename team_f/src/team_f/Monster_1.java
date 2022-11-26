@@ -12,7 +12,6 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 public class Monster_1 extends Monster_State{
@@ -62,10 +61,10 @@ public class Monster_1 extends Monster_State{
 			g.dispose();
 			return dest;
 		}
-	public void drawMonster(Graphics g, Screen screen) {
+	public void drawMonster(Graphics g, Screen screen,int[] Point) {
 		g.drawImage(mob, 
-				0, 0,  //위치 
-				0 + width+30, 0 + height+30, //크기 
+				Point[0], Point[1],  //위치 
+				Point[0] + width+20, Point[1] + height+20, //크기 
 				width*index_x + start_x, 
 				height*index_y + start_y, 
 				width*index_x+ + start_x + width, 

@@ -8,7 +8,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import static team_f.MoveMonster.Point;
 import javax.swing.ImageIcon;
 
 
@@ -19,7 +19,8 @@ public class Screen extends Canvas implements Runnable{
 	public static Dimension dim;
 	public static Image offscreen;
 	public static Graphics bufferGraphics;	
-	
+	MoveMonster move = new MoveMonster();
+
 	
 	
 	Tower_Circle Tcircle= new Tower_Circle(); 
@@ -27,17 +28,19 @@ public class Screen extends Canvas implements Runnable{
 	Monster_1 mob = new Monster_1();
 	//ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public Screen() {
-		
+		move.Copydata();
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				move.MovePoint();
 				repaint();
 				counting();
+				
 			}
-		}, 0, 1);
+		}, 0, 500);
 	}
 	
 	private int countNumber = 0;
@@ -67,16 +70,17 @@ public class Screen extends Canvas implements Runnable{
 	public void render(Graphics g) {
 		g.clearRect(0, 0, 720, 480);
 		//배경
+
 		map.background(g);
 		map.map(g);
-		mob.drawMonster(g,this);
+		mob.drawMonster(g,this,Point);
 			}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
 			while (true) {
-				
+				move.MovePoint();
 				repaint();
 				Thread.sleep(10);
 			}
