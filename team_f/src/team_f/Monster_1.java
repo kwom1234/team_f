@@ -30,6 +30,7 @@ public class Monster_1 extends Monster_State{
 			try {
 				mob = ImageIO.read(new File("team_f/src/Resource/monster-1.png"));
 				mob = TransformColorToTransparency(mob, new Color(45, 86, 56));
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -14,7 +14,7 @@ public class MoveMonster {
 	int count = 0;
 	int Move = 0;// 0일때 X방향 1일때 -Y방향 2일때 +Y방향
 	public static int Point[] = new int[2];
-
+	int X,Y;
 	public void Copydata() {
 		for (int i = 0; i < 16; i++) {
 			for (int j = 0; j < 24; j++) {
@@ -38,34 +38,42 @@ public class MoveMonster {
 		if (count == 0) {
 			System.out.println(1);
 			++MoveData[NextY][NextX];
-			for (int i = 0; i < 16; i++) {
+		/*	for (int i = 0; i < 16; i++) {
 				for (int j = 0; j < 24; j++) {
 					System.out.print(MoveData[i][j]);
 				}
 				System.out.println();
-			}
+			}*/
 			if (NextY >= 0 && NextX >= 0) {
 				if (MoveData[NextY][NextX - 1] == 1) {
 					Move = 0;
+					X=NextX;
+					Y=NextY;
 					NextX = NextX - 1;
-					Point[0] = NextX * 30;
-					Point[1] = NextY * 30 - 20;
+					Point[0] = X * 30;
+					Point[1] = Y * 30 - 20;
 				} else if (MoveData[NextY - 1][NextX] == 1) {
 					Move = 1;
+					X=NextX;
+					Y=NextY;
 					NextY = NextY - 1;
-					Point[0] = NextX * 30;
-					Point[1] = NextY * 30 - 20;
+					Point[0] = X * 30;
+					Point[1] = Y * 30 - 20;
 				} else if (MoveData[NextY + 1][NextX] == 1) {
 					Move = 2;
+					X=NextX;
+					Y=NextY;
 					NextY = NextY + 1;
-					Point[0] = NextX * 30;
-					Point[1] = NextY * 30 - 20;
+					Point[0] = X * 30;
+					Point[1] = Y * 30 - 20;
 				}
 
 			}
 			count++;
 		}else {
 			if(Move==0) {
+				System.out.println(Point[0]);
+				System.out.println(NextX*30);
 				Point[0]=Point[0]-1;
 				count++;
 			}else if(Move==1) {
@@ -75,10 +83,11 @@ public class MoveMonster {
 				Point[1]=Point[1]+1;
 				count++;
 			}
-			if(count==25) {
+			if(count==31) {
 				count=0;
 			}
 		}
+
 	
 	}
 
