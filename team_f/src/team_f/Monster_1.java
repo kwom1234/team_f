@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -40,7 +42,7 @@ public class Monster_1 extends Monster_State{
 		  final int r1 = c1.getRed();
 		  final int g1 = c1.getGreen();
 		  final int b1 = c1.getBlue();
-		 
+		
 		  ImageFilter filter = new RGBImageFilter() {
 				public int filterRGB(int x, int y, int rgb) {
 					int r = ( rgb & 0xFF0000 ) >> 16;
