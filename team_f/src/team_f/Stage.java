@@ -38,8 +38,23 @@ public class Stage {
 		}
 		if (setting == 1) {
 			// 맵 /2
+			mapdata[14][0]=1;
+			for(int i=14;i>2;i--) {
+				mapdata[i][1]=1;
+			}
+			for(int i=1;i<23;i++) {
+				mapdata[2][i]=1;
+			}
+			for(int i=14;i>2;i--) {
+				mapdata[i][22]=1;
+			}
+			mapdata[14][23]=1;
+			
+			
+					
+			}
 		}
-	}
+	
 
 
 	// 배경화면 ( 잔디)

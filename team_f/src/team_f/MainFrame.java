@@ -57,15 +57,15 @@ public class MainFrame extends JFrame implements ActionListener {
 	 * Create the application.
 	 */
 	public MainFrame() {
-		this.screen = new Screen();
-	/*	this.loadscreen=new LoadScreen();
+		
+	this.loadscreen=new LoadScreen();
 		startImage();
 		
-		*/
 		
 		
 		
-		initialize();
+		
+	//	initialize();
 	}
 
 	/**
@@ -83,15 +83,19 @@ public class MainFrame extends JFrame implements ActionListener {
 		gameStart = new JButton("게임 시작");
 		gameStart.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
 			public void actionPerformed(ActionEvent e) {
+				
 				EventQueue.invokeLater(new Runnable() {
 					
 					public void run() {
-						try {				
+						try {
+							
 							Setting = Integer.parseInt(difficulty.getText());
 							System.out.println(Setting);
 							if(Setting>=0&&Setting<=6) {
-							screen.Setting(Setting);
+								initialize();
+								screen.Setting(Setting);
 							Start.dispose();
+							
 							MainFrame window = new MainFrame();
 							window.frame.setVisible(true);}
 							else {
@@ -104,7 +108,7 @@ public class MainFrame extends JFrame implements ActionListener {
 						}
 					}
 				});
-				initialize();
+			
 				
 			}
 		});
@@ -152,7 +156,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 	}
 	private void initialize() {
-		
+		this.screen = new Screen();
 		frame = new JFrame();
 		frame.getContentPane().add(screen,BorderLayout.CENTER);
 		
