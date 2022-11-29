@@ -19,12 +19,12 @@ public class Screen extends Canvas implements Runnable{
 	public static Dimension dim;
 	public static Image offscreen;
 	public static Graphics bufferGraphics;	
+	Stage map = new Stage();
 	MoveMonster move = new MoveMonster();
 
 	
 	
 	Tower_Circle Tcircle= new Tower_Circle(); 
-	Stage map = new Stage();
 	Monster_1 mob = new Monster_1();
 	//ImageIcon background = new ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public Screen() {

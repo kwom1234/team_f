@@ -6,8 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MoveMonster {
-	int StartX = 0;// 시작포인트 받아와야함
-	int StartY = 14;// 시작포인트 받아와야함
+	public static int StartX;// 시작포인트 받아와야함
+	public static int StartY;// 시작포인트 받아와야함
 	int NextX;
 	int NextY;
 	int[][] MoveData = new int[16][24];
@@ -37,7 +37,7 @@ public class MoveMonster {
 	public void MovePoint() {
 		if (count == 0) {
 			System.out.println(1);
-			++MoveData[NextY][NextX];
+			MoveData[NextY][NextX]=2;
 		/*	for (int i = 0; i < 16; i++) {
 				for (int j = 0; j < 24; j++) {
 					System.out.print(MoveData[i][j]);
@@ -50,6 +50,13 @@ public class MoveMonster {
 					X=NextX;
 					Y=NextY;
 					NextX = NextX + 1;
+					Point[0] = X * 30;
+					Point[1] = Y * 30 - 20;
+				}else if(MoveData[NextY][NextX - 1] == 1) {
+					Move = 3;
+					X=NextX;
+					Y=NextY;
+					NextX = NextX - 1;
 					Point[0] = X * 30;
 					Point[1] = Y * 30 - 20;
 				} else if (MoveData[NextY - 1][NextX] == 1) {
@@ -79,6 +86,9 @@ public class MoveMonster {
 				count++;
 			}else if(Move==2) {
 				Point[1]=Point[1]+1;
+				count++;
+			}else if(Move==3) {
+				Point[0]=Point[0]-1;
 				count++;
 			}
 			if(count==31) {

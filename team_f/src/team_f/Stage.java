@@ -18,6 +18,8 @@ public class Stage {
 		back = new ImageIcon(getClass().getClassLoader().getResource("Resource/jandy-2.png")).getImage();
 		Load = new ImageIcon(getClass().getClassLoader().getResource("Resource/load.png")).getImage();
 		if (setting == 0) {// 기본맵
+			MoveMonster.StartX=0;
+			MoveMonster.StartY=7;
 			for (int i = 18; i < 24; i++) {// 리스트에 1들어갈시 길
 				mapdata[7][i] = 1;
 			}
@@ -38,6 +40,9 @@ public class Stage {
 		}
 		if (setting == 1) {
 			// 맵 /2
+
+			MoveMonster.StartX=0;
+			MoveMonster.StartY=14;
 			mapdata[14][0]=1;
 			for(int i=14;i>2;i--) {
 				mapdata[i][1]=1;
