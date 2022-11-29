@@ -80,7 +80,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		JPanel panel = new JPanel();
 		Start.getContentPane().add(panel, BorderLayout.SOUTH);
 		
-		gameStart = new JButton("게임 시작");
+		gameStart = new JButton("보통(Normal) / 1");
+		gameStart.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		gameStart.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
 			public void actionPerformed(ActionEvent e) {
 				
@@ -89,7 +90,8 @@ public class MainFrame extends JFrame implements ActionListener {
 					public void run() {
 						try {
 							
-							Setting = Integer.parseInt(difficulty.getText());
+							//Setting = Integer.parseInt(difficulty.getText());
+							Setting = 1;
 							System.out.println(Setting);
 							if(Setting>=0&&Setting<=6) {
 								initialize();
@@ -114,7 +116,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		});
 		
 		difficulty = new JTextField();
-		difficulty.setHorizontalAlignment(SwingConstants.RIGHT);
+		difficulty.setHorizontalAlignment(SwingConstants.CENTER);
 		difficulty.setFont(new Font("굴림", Font.BOLD, 28));
 		difficulty.setText("0");
 		difficulty.setColumns(10);
@@ -125,30 +127,87 @@ public class MainFrame extends JFrame implements ActionListener {
 		textField.setFont(new Font("굴림", Font.BOLD, 15));
 		textField.setText("난이도 설정(0~6)");
 		textField.setColumns(10);
+		
+		JButton gameStart_1 = new JButton("쉬움(Easy) / 0");
+		gameStart_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		gameStart_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				EventQueue.invokeLater(new Runnable() {
+					
+					public void run() {
+						try {
+							
+							Setting = 0;
+							//Setting = Integer.parseInt(difficulty.getText());
+							System.out.println(Setting);
+							if(Setting>=0&&Setting<=6) {
+								
+								
+								initialize();
+								screen.Setting(Setting);
+							Start.dispose();
+							
+							MainFrame window = new MainFrame();
+							window.frame.setVisible(true);}
+							else {
+								JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+
+							}
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+							e.printStackTrace();
+						}
+					}
+				});
+			
+				
+			}
+		});
+		
+		gameStart_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		
+		JButton gameStart_2 = new JButton("어려움(Hard) / 1");
+		gameStart_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		gameStart_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(196, Short.MAX_VALUE)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
-					.addGap(71)
-					.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+					.addGap(20)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(49))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+							.addGap(39)
+							.addComponent(gameStart_2, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(94, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(22, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-						.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-					.addGap(19))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(44)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(69, Short.MAX_VALUE))
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+					.addGap(23)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(gameStart_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		Start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
