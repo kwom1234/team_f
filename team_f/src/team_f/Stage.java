@@ -20,7 +20,7 @@ public class Stage {
 		if (setting == 0) {// 기본맵
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=7;
-			for (int i = 18; i < 24; i++) {// 리스트에 1들어갈시 길
+			for (int i = 18; i < 24; i++) {// 리스트에 1들어갈시 길 // 이지 다시그릴것
 				mapdata[7][i] = 1;
 			}
 			mapdata[6][18] = 1;
@@ -39,7 +39,7 @@ public class Stage {
 			}
 		}
 		if (setting == 1) {
-			// 맵 /2
+			// 맵 /2노말
 
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
@@ -58,6 +58,9 @@ public class Stage {
 			
 					
 			}
+		if(setting == 2) {
+			//하드모드
+		}
 		}
 	
 
