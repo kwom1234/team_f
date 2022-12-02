@@ -17,9 +17,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Monster_1 extends Monster_State{
+	MoveMonster move;
 
 	public Monster_1(){
-		
+		move = new MoveMonster();
 		 index_x = 0;
 		 index_y = 0;
 		start_x = 0;//그림상의 좌표
@@ -28,7 +29,7 @@ public class Monster_1 extends Monster_State{
 		 Power=0;
 		Speed= 0;
 		stop = false;
-		
+		move.Copydata();
 			try {
 				mob = ImageIO.read(new File("team_f/src/Resource/monster-1.png"));
 				mob = TransformColorToTransparency(mob, new Color(45, 86, 56));

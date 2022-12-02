@@ -13,7 +13,7 @@ public class MoveMonster {
 	int[][] MoveData = new int[16][24];
 	int count = 0;
 	int Move = 0;// 0일때 X방향 1일때 -Y방향 2일때 +Y방향
-	public static int Point[] = new int[2];
+	int Point[] = new int[2];
 	int X,Y;
 	public void Copydata() {
 		for (int i = 0; i < 16; i++) {
