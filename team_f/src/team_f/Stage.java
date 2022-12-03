@@ -9,37 +9,86 @@ public class Stage {
 	Image back;
 	Image Load;
 	Image mob;
-	int setting = Setting;//기본세팅
-	public static int[][] mapdata = new int[16][24]; // 흙 위치- 게임 재시작하거나 맵 변경시 다시 0으로 초기화할것
+	int setting = Setting;//湲곕낯�꽭�똿
+	public static int[][] mapdata = new int[16][24]; // �쓾 �쐞移�- 寃뚯엫 �옱�떆�옉�븯嫄곕굹 留� 蹂�寃쎌떆 �떎�떆 0�쑝濡� 珥덇린�솕�븷寃�
 	Screen screen;
 
 
 	public Stage() {
 		back = new ImageIcon(getClass().getClassLoader().getResource("Resource/jandy-2.png")).getImage();
 		Load = new ImageIcon(getClass().getClassLoader().getResource("Resource/load.png")).getImage();
-		if (setting == 0) {// 기본맵
-			MoveMonster.StartX=0;
-			MoveMonster.StartY=7;
-			for (int i = 18; i < 24; i++) {// 리스트에 1들어갈시 길 // 이지 다시그릴것
-				mapdata[7][i] = 1;
-			}
-			mapdata[6][18] = 1;
-			mapdata[5][18] = 1;
-			mapdata[4][18] = 1;
-			mapdata[4][17] = 1;
-			mapdata[4][16] = 1;
-			mapdata[4][15] = 1;
-			mapdata[4][14] = 1;
-			mapdata[5][14] = 1;
-			mapdata[6][14] = 1;
-			mapdata[7][14] = 1;
+		if (setting == 0) {// 湲곕낯留�
 
-			for (int i = 0; i < 14; i++) {
-				mapdata[7][i] = 1;
+			MoveMonster.StartX=0;
+			MoveMonster.StartY=14;
+			
+			mapdata[14][0] = 1;
+			mapdata[14][1] = 1;
+			mapdata[14][2] = 1;
+			mapdata[14][3] = 1;
+			mapdata[13][3] = 1;
+			mapdata[12][3] = 1;
+			mapdata[12][2] = 1;
+			mapdata[12][1] = 1;
+			mapdata[11][1] = 1;
+			mapdata[10][1] = 1;
+			mapdata[10][2] = 1;
+			mapdata[10][3] = 1;
+			mapdata[9][3] = 1;
+			mapdata[8][3] = 1;
+			mapdata[8][2] = 1;
+			mapdata[8][1] = 1;
+			mapdata[7][1] = 1;
+			mapdata[6][1] = 1;
+			mapdata[6][2] = 1;
+			mapdata[6][3] = 1;
+			mapdata[5][3] = 1;
+			mapdata[4][3] = 1;
+			mapdata[4][2] = 1;
+			mapdata[4][1] = 1;
+			mapdata[3][1] = 1;
+			mapdata[2][1] = 1;
+			
+			for(int i=1;i<23;i++) {
+				mapdata[1][i]=1;
 			}
+			mapdata[2][22] = 1;
+			mapdata[3][22] = 1;
+			mapdata[3][21] = 1;
+			mapdata[3][20] = 1;
+			mapdata[3][19] = 1;
+			mapdata[4][19] = 1;
+			mapdata[5][19] = 1;
+			mapdata[5][20] = 1;
+			mapdata[5][21] = 1;
+			mapdata[5][22] = 1;
+			mapdata[6][22] = 1;
+			mapdata[7][22] = 1;
+			mapdata[7][21] = 1;
+			mapdata[7][20] = 1;
+			mapdata[7][19] = 1;
+			mapdata[8][19] = 1;
+			mapdata[9][19] = 1;
+			mapdata[9][20] = 1;
+			mapdata[9][21] = 1;
+			mapdata[9][22] = 1;
+			mapdata[10][22] = 1;
+			mapdata[11][22] = 1;
+			mapdata[11][21] = 1;
+			mapdata[11][20] = 1;
+			mapdata[11][19] = 1;
+			mapdata[12][19] = 1;
+			mapdata[13][19] = 1;
+			mapdata[14][19] = 1;
+			mapdata[14][20] = 1;
+			mapdata[14][21] = 1;
+			mapdata[14][22] = 1;
+			mapdata[14][22] = 1;
+			mapdata[14][23] = 1;
+
 		}
 		if (setting == 1) {
-			// 맵 /2노말
+			// 留� /2�끂留�
 
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
@@ -59,7 +108,7 @@ public class Stage {
 					
 			}
 		if(setting == 2) {
-			//하드모드
+			//�븯�뱶紐⑤뱶
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
 			mapdata[14][0]=1;
@@ -265,21 +314,21 @@ public class Stage {
 	
 
 
-	// 배경화면 ( 잔디)
+	// 諛곌꼍�솕硫� ( �옍�뵒)
 	public void background(Graphics g) {
 		g.drawImage(this.back, 0, 0, screen);
 	}
 
-	// 길 그리기(흙) 클래스
+	// 湲� 洹몃━湲�(�쓾) �겢�옒�뒪
 	public void map(Graphics g) {
 		
-		// 길 그리는 부분
+		// 湲� 洹몃━�뒗 遺�遺�
 
 		for (int i = 0; i < 24; i++) {
 			for (int j = 0; j < 16; j++) {
 				if (mapdata[j][i] == 1) {
 					int x = i * 30, y = j * 30;
-					g.drawImage(this.Load, x, y, screen); // 30은 load이미지의 크기
+					g.drawImage(this.Load, x, y, screen); // 30�� load�씠誘몄��쓽 �겕湲�
 				}
 			}
 		}
