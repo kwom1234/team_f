@@ -60,8 +60,47 @@ public class Stage {
 			}
 		if(setting == 2) {
 			//하드모드
+			MoveMonster.StartX=0;
+			MoveMonster.StartY=10;
+			mapdata[10][0]=1;
+			for(int i=0;i<24;i++) {
+				mapdata[0][i]=1;
+				mapdata[1][i]=1;
+				
+				mapdata[13][i]=1;
+				mapdata[14][i]=1;
+				mapdata[15][i]=1;
+			}
+			for(int i=1;i<24;i++) {
+				if(i%4==0) {
+					i++;
+				}
+
+				mapdata[4][i]=1;
+			}
+			
+			for(int i=1;i<22;i++) {
+				if(i%2==0) {
+					i++;
+				}
+				mapdata[5][i]=1;
+				mapdata[6][i]=1;
+				mapdata[7][i]=1;
+				mapdata[8][i]=1;
+				mapdata[9][i]=1;
+				mapdata[10][i]=1;
+			}
+			for(int i=1;i<24;i++) {
+				if(i%4==0) {
+
+					mapdata[10][i]=1;
+				}
+
+				
+			}
+
 		}
-		}
+	}
 	
 
 

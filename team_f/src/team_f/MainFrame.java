@@ -167,9 +167,33 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		gameStart_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		
-		JButton gameStart_2 = new JButton("어려움(Hard) / 1");
+		JButton gameStart_2 = new JButton("어려움(Hard) / 2");
 		gameStart_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {	
+					public void run() {
+						try {		
+							//Setting = Integer.parseInt(difficulty.getText());
+							Setting = 2;
+							System.out.println(Setting);
+							if(Setting>=0&&Setting<=6) {
+								initialize();
+								screen.Setting(Setting);
+								Start.dispose();
+											
+								MainFrame window = new MainFrame();
+								window.frame.setVisible(true);
+								}
+								else {
+									JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+								}
+						}
+						catch (Exception e) {
+							JOptionPane.showMessageDialog(null, "지정된 범위의 값을 입력하세요");
+							e.printStackTrace();
+						}
+					}
+				});
 			}
 		});
 		gameStart_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
