@@ -9,7 +9,7 @@ public class Stage {
 	Image back;
 	Image Load;
 	Image mob;
-	int setting = Setting;//湲곕낯�꽭�똿
+	int setting = Setting;//아아 한글테스트~한글테스트~
 	public static int[][] mapdata = new int[16][24]; // �쓾 �쐞移�- 寃뚯엫 �옱�떆�옉�븯嫄곕굹 留� 蹂�寃쎌떆 �떎�떆 0�쑝濡� 珥덇린�솕�븷寃�
 	Screen screen;
 
