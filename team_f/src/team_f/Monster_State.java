@@ -12,7 +12,8 @@ public class Monster_State {
 	public int start_y = 0;
 	public int frame_size = 0;
 	public int Power=0;
-	public int Speed= 0;
+
+	public int HP = 100;
 	public boolean stop = false;
 	
 }
