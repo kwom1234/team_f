@@ -74,7 +74,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	private void startImage() {
 		Start = new JFrame();
 		Start.setTitle("타워디펜스");
-		Start.setBounds(100, 100, 720, 640);
+		Start.setBounds(100, 100, 730, 640);
 		Start.getContentPane().add(loadscreen,BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
@@ -325,7 +325,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		panel_1.setLayout(gl_panel_1);
 		panel.setLayout(gl_panel);
 		frame.setTitle("타워디펜스");
-		frame.setBounds(100, 100, 720, 640);
+		frame.setBounds(100, 100, 730, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
