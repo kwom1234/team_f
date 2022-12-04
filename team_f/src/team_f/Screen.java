@@ -38,6 +38,7 @@ public class Screen extends Canvas implements Runnable {
 		}, 0, 1);
 		Timer MoveTimer = new Timer();
 		MoveTimer.schedule(new TimerTask() {
+		
 
 			@Override
 			public void run() {
@@ -51,7 +52,6 @@ public class Screen extends Canvas implements Runnable {
 					mob1.add(new Monster_1());
 					count = 0;
 				}
-
 //				mob.move.MovePoint();
 
 			}

@@ -17,8 +17,8 @@ public class Stage {
 	public Stage() {
 		back = new ImageIcon(getClass().getClassLoader().getResource("Resource/jandy-2.png")).getImage();
 		Load = new ImageIcon(getClass().getClassLoader().getResource("Resource/load.png")).getImage();
-		if (setting == 0) {// 湲곕낯留�
-
+		if (setting == 0) {
+			//이지모드
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
 			
@@ -26,7 +26,9 @@ public class Stage {
 			mapdata[14][1] = 1;
 			mapdata[14][2] = 1;
 			mapdata[14][3] = 1;
-			mapdata[13][3] = 1;
+			mapdata[14][4] = 1;
+			mapdata[13][4] = 1;
+			mapdata[12][4] = 1;
 			mapdata[12][3] = 1;
 			mapdata[12][2] = 1;
 			mapdata[12][1] = 1;
@@ -34,7 +36,9 @@ public class Stage {
 			mapdata[10][1] = 1;
 			mapdata[10][2] = 1;
 			mapdata[10][3] = 1;
-			mapdata[9][3] = 1;
+			mapdata[10][4] = 1;
+			mapdata[9][4] = 1;
+			mapdata[8][4] = 1;
 			mapdata[8][3] = 1;
 			mapdata[8][2] = 1;
 			mapdata[8][1] = 1;
@@ -42,7 +46,9 @@ public class Stage {
 			mapdata[6][1] = 1;
 			mapdata[6][2] = 1;
 			mapdata[6][3] = 1;
-			mapdata[5][3] = 1;
+			mapdata[6][4] = 1;
+			mapdata[5][4] = 1;
+			mapdata[4][4] = 1;
 			mapdata[4][3] = 1;
 			mapdata[4][2] = 1;
 			mapdata[4][1] = 1;
@@ -88,7 +94,7 @@ public class Stage {
 
 		}
 		if (setting == 1) {
-			// 留� /2�끂留�
+			// 노말모드
 
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
@@ -108,7 +114,7 @@ public class Stage {
 					
 			}
 		if(setting == 2) {
-			//�븯�뱶紐⑤뱶
+			//하드모드
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
 			mapdata[14][0]=1;
