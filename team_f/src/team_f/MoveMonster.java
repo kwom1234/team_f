@@ -8,6 +8,7 @@ import java.util.TimerTask;
 public class MoveMonster {
 	public static int StartX;// 시작포인트 받아와야함
 	public static int StartY;// 시작포인트 받아와야함
+	public static int EndX,EndY;//끝 포인트 받아와야함
 	int NextX;
 	int NextY;
 	int[][] MoveData = new int[16][24];

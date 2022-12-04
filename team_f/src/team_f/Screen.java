@@ -51,45 +51,105 @@ public class Screen extends Canvas implements Runnable {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				for (Monster_1 i : mob1) {
+				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) { //만약에 끝에 닿으면 삭제
+						mob1.remove(i);
+						break;
+					}
 				}
 				for (Monster_2 i : mob2) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob2.remove(i);
+						break;
+					}
 				}
 				for (Monster_3 i : mob3) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob3.remove(i);
+						break;
+					}
 				}
 				for (Monster_4 i : mob4) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob4.remove(i);
+						break;
+					}
 				}
 				for (Monster_5 i : mob5) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob5.remove(i);
+						break;
+					}
 				}
 				for (Monster_6 i : mob6) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob6.remove(i);
+						break;
+					}
 				}
 				for (Monster_7 i : mob7) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob7.remove(i);
+						break;
+					}
 				}
 				for (Monster_8 i : mob8) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob8.remove(i);
+						break;
+					}
 				}
 				for (Monster_9 i : mob9) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob9.remove(i);
+						break;
+					}
 				}
 				for (Monster_10 i : mob10) {
 					i.move.MovePoint();
+					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) {
+						mob10.remove(i);
+						break;
+					}
 				}
 				NextC++;
 				if (NextC == nextMobT) {
 					count++;
-					if(count<10) {
+					if(count<50) {
 						mob1.add(new Monster_1());	
-					}else if(count<20) {
+					}else if(count<100) {
 						mob2.add(new Monster_2());
-					}else if(count<30) {
+					}else if(count<150) {
 						mob3.add(new Monster_3());
+					}else if(count<200) {
+						mob4.add(new Monster_4());
+					}
+					else if(count<250) {
+						mob5.add(new Monster_5());
+					}
+					else if(count<300) {
+						mob6.add(new Monster_6());
+					}
+					else if(count<350) {
+						mob7.add(new Monster_7());
+					}
+					else if(count<400) {
+						mob8.add(new Monster_8());
+					}
+					else if(count<450) {
+						mob9.add(new Monster_9());
+					}
+					else if(count<500) {
+						mob10.add(new Monster_10());
 					}
 					NextC = 0;
 				}
