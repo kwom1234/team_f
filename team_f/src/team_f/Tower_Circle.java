@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -11,15 +12,18 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
-
+import static team_f.Stage.mapdata;
 import javax.imageio.ImageIO;
 public class Tower_Circle extends Tower_State{
 	
+	
+	
 	public Tower_Circle(){
-		
+		//this.x= (int) (Math.random() *23);
+		//this.y=(int) (Math.random() *15);
 		 index_x = 0;
 		 index_y = 0;
-		start_x = 32;//그림상의 좌표
+		start_x = 0;//그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
 		 Power=0;
@@ -60,14 +64,31 @@ public class Tower_Circle extends Tower_State{
 			g.dispose();
 			return dest;
 		}
-	public void drawTower(Graphics g) {
-		g.drawImage(tower, 
-				0, 0,  //위치 
-				0 + width+50, 0 + height+50, //크기 
-				width*index_x + start_x, 
-				height*index_y + start_y, 
-				width*index_x+ + start_x + width, 
-				height*index_y + start_y + height, 
-				screen);
+	public  void drawTower(Graphics g) {
+		
+		
+			if(MainFrame.count>=1) {
+			
+				for(int i=0; i<=MainFrame.x; i++) {
+					for(int j=0; j<=MainFrame.y; j++) {
+				if(mapdata[MainFrame.y][MainFrame.x]==0) {
+					g.drawImage(tower, 
+							MainFrame.xx, MainFrame.yy,  //위치 
+							MainFrame.xx + width+30,MainFrame.yy + height+30, //크기 
+							width*index_x + start_x, 
+							height*index_y + start_y, 
+							width*index_x+ + start_x + width, 
+							height*index_y + start_y + height, 
+							screen);
+					mapdata[MainFrame.h][MainFrame.w]=2;
+			}
+				}
+			}
+			}
+			
+	}
+	public  static void drawTower(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

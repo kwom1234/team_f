@@ -190,9 +190,9 @@ public class Screen extends Canvas implements Runnable {
 	public void render(Graphics g) {
 		g.clearRect(0, 0, 720, 480);
 		// 배경
-
 		map.background(g);
 		map.map(g);
+		Tcircle.drawTower(g);
 		for (Monster_1 i : mob1) {
 			i.drawMonster(g, this, i.move.Point);
 		}
