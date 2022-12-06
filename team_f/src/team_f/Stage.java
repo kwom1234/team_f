@@ -140,204 +140,37 @@ public class Stage {
 			//하드모드
 			MoveMonster.StartX=0;
 			MoveMonster.StartY=14;
-			MoveMonster.EndX=23;
-			MoveMonster.EndY=14;
+			MoveMonster.EndX=12;
+			MoveMonster.EndY=0;
 			mapdata[14][0]=1;
-			for(int i=1;i<24;i++) {
-				if(i==1) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-					
-				}
-				if(i==2) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-				}
-				if(i==3) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-				}
-				if(i==4) {
-					mapdata[2][i]=1;
-					
-
-				}
-				if(i==5) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-
-				}
-				if(i==6) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-
-				}
-				if(i==7) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-
-				}
-				if(i==8) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==9) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==10) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==11) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==12) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==13) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==14) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==15) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==16) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==17) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==18) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-
-				}
-				if(i==19) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-				}
-				if(i==20) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-				}
-				if(i==21) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-				}
-				if(i==22) {
-					mapdata[2][i]=1;
-					mapdata[3][i]=1;
-					mapdata[4][i]=1;
-					mapdata[5][i]=1;
-					mapdata[6][i]=1;
-					mapdata[7][i]=1;
-					mapdata[8][i]=1;
-					mapdata[9][i]=1;
-					mapdata[10][i]=1;
-					mapdata[11][i]=1;
-					mapdata[12][i]=1;
-					mapdata[13][i]=1;
-					mapdata[14][i]=1;
-				}
-				if(i==23) {
-					
-					mapdata[14][i]=1;
-				}
+			mapdata[14][1]=1;
+			mapdata[13][1]=1;
+			mapdata[12][1]=1;
+			mapdata[11][1]=1;
+			mapdata[10][1]=1;
+			mapdata[9][1]=1;
+			mapdata[8][1]=1;
+			mapdata[7][1]=1;
+			mapdata[6][1]=1;
+			mapdata[5][1]=1;
+			mapdata[4][1]=1;
+			mapdata[3][1]=1;
+			mapdata[2][1]=1;
+			mapdata[2][2]=1;
+			mapdata[2][3]=1;
+			mapdata[2][4]=1;
+			mapdata[2][5]=1;
+			mapdata[2][6]=1;
+			mapdata[2][7]=1;
+			mapdata[2][8]=1;
+			mapdata[2][9]=1;
+			mapdata[2][10]=1;
+			mapdata[2][11]=1;
+			mapdata[2][12]=1;
+			mapdata[1][12]=1;
+			mapdata[0][12]=1;
 				
-			}
+			
 			
 
 		}
