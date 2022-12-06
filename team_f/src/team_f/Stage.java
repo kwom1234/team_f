@@ -169,10 +169,6 @@ public class Stage {
 			mapdata[2][12]=1;
 			mapdata[1][12]=1;
 			mapdata[0][12]=1;
-				
-			
-			
-
 		}
 	}
 	
