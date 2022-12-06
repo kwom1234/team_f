@@ -52,7 +52,12 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JTextField difficulty;
 	private JTextField textField;
 	public static int Setting;
-
+	public static int count;
+	public static int x;
+	public static int y;
+	public static int xx;
+	public static int yy;
+	public static int w,h;
 	/**
 	 * Create the application.
 	 */
@@ -327,6 +332,23 @@ public class MainFrame extends JFrame implements ActionListener {
 		frame.setTitle("타워디펜스");
 		frame.setBounds(100, 100, 730, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		btnNewButton_3.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
+			public void actionPerformed(ActionEvent e) {
+			
+				x=(int) (Math.random() *24);  // 랜덤 x좌표
+				y=(int) (Math.random() *16);   // 랜덤 y좌표
+				xx=MainFrame.x*30; //
+				yy=MainFrame.y*30;
+				w=MainFrame.x/30; //
+				 h=MainFrame.y/30;
+				//System.out.println("d");
+				count++;
+				//System.out.println(count);
+				System.out.println(x);
+				System.out.println(y);
+				//count=0;
+		}
+	});
 	}
 
 	@Override
