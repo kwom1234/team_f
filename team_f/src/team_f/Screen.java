@@ -55,7 +55,7 @@ public class Screen extends Canvas implements Runnable {
 					i.move.MovePoint();
 					if(i.move.Point[0]==MoveMonster.EndX*30&&i.move.Point[1]==MoveMonster.EndY*30-20) { //만약에 끝에 닿으면 삭제
 						mob1.remove(i);
-						break;
+						break;//포문이 지속될시 오류 
 					}
 				}
 				for (Monster_2 i : mob2) {
@@ -126,9 +126,9 @@ public class Screen extends Canvas implements Runnable {
 					count++;
 					if(count<50) {
 						mob1.add(new Monster_1());	
-					}else if(count<100) {
+					}else if(count<102&&count>52) { //카운터 갯수 조절시 변경 몹 사이 간격 조절 가능 Ex) 100 <count < 103
 						mob2.add(new Monster_2());
-					}else if(count<150) {
+					}else if(count>104&&count<154) {
 						mob3.add(new Monster_3());
 					}else if(count<200) {
 						mob4.add(new Monster_4());
