@@ -53,11 +53,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JTextField textField;
 	public static int Setting;
 	public static int count;
-	public static int x;
-	public static int y;
-	public static int xx;
-	public static int yy;
-	public static int w,h;
+
 	/**
 	 * Create the application.
 	 */
@@ -88,10 +84,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		gameStart = new JButton("보통(Normal) / 1");
 		gameStart.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		gameStart.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
-			public void actionPerformed(ActionEvent e) {
-				
-				EventQueue.invokeLater(new Runnable() {
-					
+			public void actionPerformed(ActionEvent e) {				
+				EventQueue.invokeLater(new Runnable() {					
 					public void run() {
 						try {
 							
@@ -335,18 +329,9 @@ public class MainFrame extends JFrame implements ActionListener {
 		btnNewButton_3.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
 			public void actionPerformed(ActionEvent e) {
 			
-				x=(int) (Math.random() *24);  // 랜덤 x좌표
-				y=(int) (Math.random() *16);   // 랜덤 y좌표
-				xx=MainFrame.x*30; //
-				yy=MainFrame.y*30;
-				w=MainFrame.x/30; //
-				 h=MainFrame.y/30;
-				//System.out.println("d");
+				screen.addTowerCilcle();
 				count++;
-				//System.out.println(count);
-				System.out.println(x);
-				System.out.println(y);
-				//count=0;
+
 		}
 	});
 	}
