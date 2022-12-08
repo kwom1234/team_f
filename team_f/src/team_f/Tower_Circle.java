@@ -36,10 +36,10 @@ public class Tower_Circle extends Tower_State {
 		Power = 0;
 		Speed = 0;
 		stop = false;
-		x = (int) (Math.random() * 24); // 랜덤 x좌표
-		y = (int) (Math.random() * 16); // 랜덤 y좌표
-		xx = x * 30; //
-		yy = y * 30;
+		x = (int) (Math.random() * 14)+5; // 랜덤 x좌표
+		y = (int) (Math.random() * 11)+5; // 랜덤 y좌표
+		xx = x * 60; //
+		yy = y * 60;
 		w = x / 30; //
 		h = y / 30;
 
