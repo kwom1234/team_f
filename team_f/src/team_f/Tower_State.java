@@ -19,6 +19,7 @@ public class Tower_State {
 	public int frame_size = 0;
 	public int Power=0;
 	public int Speed= 0;
+	public int needGole=50;
 	public boolean stop = false;
 	
 	Screen screen;
