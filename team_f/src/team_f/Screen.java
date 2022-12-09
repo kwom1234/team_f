@@ -41,7 +41,6 @@ public class Screen extends Canvas implements Runnable {
 
 	public Screen() {
 		mob1.add(new Monster_1());
-		Tcircle.add(new Tower_Circle());
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 

@@ -37,7 +37,6 @@ public class MoveMonster {
 
 	public void MovePoint() {
 		if (count == 0) {
-			System.out.println(1);
 			MoveData[NextY][NextX]=2;
 		/*	for (int i = 0; i < 16; i++) {
 				for (int j = 0; j < 24; j++) {
@@ -96,8 +95,7 @@ public class MoveMonster {
 				count=0;
 			}
 		}
-		System.out.println(Point[0]);
-		System.out.println(Point[1]);
+
 	
 	}
 
