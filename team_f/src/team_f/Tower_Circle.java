@@ -24,7 +24,7 @@ public class Tower_Circle extends Tower_State {
 	int yy;
 	int w; //
 	int h;
-	
+
 	public Tower_Circle() {
 		// this.x= (int) (Math.random() *23);
 		// this.y=(int) (Math.random() *15);
@@ -36,19 +36,7 @@ public class Tower_Circle extends Tower_State {
 		Power = 0;
 		Speed = 0;
 		stop = false;
-		x = (int) (Math.random() * (16-6+1) + 6); // 랜덤 x좌표
-		y = (int) (Math.random() * (14-4+1) + 4); // 랜덤 y좌표
-		if((x%2)==1) {
-			x=x-1;
-		}
-		if((y%2)==1) {
-			y=y-1;
-		}
-		xx = x * 30; //
-		yy = y * 30;
-		w = x / 30; //
-		h = y / 30;
-
+		PointInv();
 		// System.out.println("d");
 
 		// System.out.println(count);
@@ -63,7 +51,25 @@ public class Tower_Circle extends Tower_State {
 			e.printStackTrace();
 		}
 	}
-
+	public void PointInv() {
+		x = (int) (Math.random() * (16 - 6 + 1) + 6); // 랜덤 x좌표
+		y = (int) (Math.random() * (14 - 4 + 1) + 4); // 랜덤 y좌표
+		if ((x % 2) == 1) {
+			x = x - 1;
+		}
+		if ((y % 2) == 1) {
+			y = y - 1;
+		}
+		xx = x * 30; //
+		yy = y * 30;
+		w = x / 30; //
+		h = y / 30;
+		if (mapdata[y][x] == 0) {
+			mapdata[y][x] = 5;
+		}else {
+			PointInv();
+		}
+	}
 	protected BufferedImage TransformColorToTransparency(BufferedImage image, Color c1) {
 		final int r1 = c1.getRed();
 		final int g1 = c1.getGreen();
@@ -94,14 +100,12 @@ public class Tower_Circle extends Tower_State {
 
 		if (MainFrame.count >= 1) {
 
-					if (mapdata[y][x] == 0) {
-						g.drawImage(tower, xx, yy, // 위치
-								xx + width + 30, yy + height + 30, // 크기
-								width * index_x + start_x, height * index_y + start_y,
-								width * index_x + +start_x + width, height * index_y + start_y + height, screen);
-						mapdata[h][w] = 5;
-
-			}
+			
+				g.drawImage(tower, xx, yy, // 위치
+						xx + width + 30, yy + height + 30, // 크기
+						width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
+						height * index_y + start_y + height, screen);
+			
 		}
 
 	}
