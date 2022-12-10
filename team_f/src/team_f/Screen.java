@@ -3,14 +3,20 @@ package team_f;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
 
-public class Screen extends Canvas implements Runnable {
+public class Screen extends Canvas implements Runnable, MouseListener, MouseMotionListener  {
 	private static final long serialVersionUID = -7314136332860432911L;
 	public static Dimension dim;
 	public static Image offscreen;
@@ -19,7 +25,10 @@ public class Screen extends Canvas implements Runnable {
 	int nextMobT = 50;
 	int NextC = 0;
 	int count = 0;
-	ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
+	private LinkedList<Point> mousePointList = new LinkedList<>();
+	private Point Bpoint = new Point();
+	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
+	ArrayList<Bullet_circle> Bcircle = new ArrayList<Bullet_circle>();
 	ArrayList<Monster_1> mob1 = new ArrayList<Monster_1>();
 	ArrayList<Monster_2> mob2 = new ArrayList<Monster_2>();
 	ArrayList<Monster_3> mob3 = new ArrayList<Monster_3>();
@@ -38,8 +47,16 @@ public class Screen extends Canvas implements Runnable {
 		Tcircle.add(new Tower_Circle());
 		System.out.println("추가?");
 	}
-
+	
+	public void addBulletCilcle() {
+			
+			Bcircle.add(new Bullet_circle());
+			
+			System.out.println("bullet");
+	}
 	public Screen() {
+		addMouseListener(this);
+		addMouseMotionListener(this);
 		mob1.add(new Monster_1());
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
@@ -174,12 +191,22 @@ public class Screen extends Canvas implements Runnable {
 	}
 
 	// 더블 버퍼링
-	@Override
+	public void initBufferd(Graphics g) { 
+        dim = getSize(); 
+        //화면의 크기를 가져온다. 
+        offscreen = createImage(dim.width,dim.height);
+        //화면 크기와 똑같은 가상 버퍼(이미지)를 생성한다.
+        bufferGraphics = offscreen.getGraphics(); 
+        //가상버퍼(이미지)로 부터 그래픽스 객체를 얻어옴
+        update(g);
+     }
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		offscreen = createImage(1050, 650);
 		bufferGraphics = offscreen.getGraphics();
 		update(g);
+		
+		
 	}
 
 	// 더블 버퍼링
@@ -228,6 +255,10 @@ public class Screen extends Canvas implements Runnable {
 		for (Tower_Circle i : Tcircle) {
 			i.drawTower(g, this);
 		}
+		for (Bullet_circle i : Bcircle) {
+			i.drawBcircle(g, this, null);
+			
+		}
 	}
 
 	@Override
@@ -246,10 +277,67 @@ public class Screen extends Canvas implements Runnable {
 		}
 
 	}
-
+	
 	// 세팅값 지정
 	public void Setting(int a) {
 		map.setting = a;
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		Graphics g = getGraphics();
+		//Point point = e.getPoint();
+		Bpoint = e.getPoint();
+		mousePointList.add(Bpoint);
+		// TODO Auto-generated method stub
+		
+		Bullet_circle bullet_circle = new Bullet_circle();
+		//for(Point point : mousePointList) {
+		//}
+		addBulletCilcle();
+		System.out.println(Bpoint);
+		//System.out.println(Bpoint.x);
+		//System.out.println(Bpoint.y);
+		bullet_circle.drawBcircle(g, this, null);
+		repaint();
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

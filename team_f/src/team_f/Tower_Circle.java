@@ -18,8 +18,8 @@ import javax.imageio.ImageIO;
 
 public class Tower_Circle extends Tower_State {
 	
-	int x; // 랜덤 x좌표
-	int y; // 랜덤 y좌표
+	public static int x; // 랜덤 x좌표
+	public static int y; // 랜덤 y좌표
 	int xx; //
 	int yy;
 	int w; //
@@ -40,8 +40,8 @@ public class Tower_Circle extends Tower_State {
 		// System.out.println("d");
 
 		// System.out.println(count);
-		System.out.println(x);
-		System.out.println(y);
+		//System.out.println(x);
+		//System.out.println(y);
 		// count=0;
 		try {
 			tower = ImageIO.read(new File("team_f/src/Resource/tower.png"));

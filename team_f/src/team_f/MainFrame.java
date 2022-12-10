@@ -1,6 +1,7 @@
 package team_f;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -21,12 +22,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Point;
 
 import javax.swing.border.LineBorder;
 import javax.swing.BoxLayout;
@@ -41,6 +45,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Graphics;
 
 public class MainFrame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -7314136332860432911L;
@@ -53,16 +58,18 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JTextField textField;
 	public static int Setting;
 	public static int count;
+	//private LinkedList<Point> mousePointList = new LinkedList<>();
+	//private Point Bpoint = new Point();
 
 	/**
 	 * Create the application.
 	 */
 	public MainFrame() {
 		
-	this.loadscreen=new LoadScreen();
+		this.loadscreen=new LoadScreen();
 		startImage();
 		
-		
+		//screen.addBulletCilcle();
 		
 		
 		
@@ -108,6 +115,7 @@ public class MainFrame extends JFrame implements ActionListener {
 							e.printStackTrace();
 						}
 					}
+					
 				});
 			
 				
@@ -237,6 +245,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		
 	}
+
 	private void initialize() {
 		this.screen = new Screen();
 		frame = new JFrame();
@@ -247,6 +256,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		
 		JButton btnNewButton_1 = new JButton("스킬 사용");
+		
+		//btnNewButton_1.addActionListener(this);
 		
 		JButton btnNewButton_2 = new JButton("포탑 강화");
 		
@@ -330,15 +341,22 @@ public class MainFrame extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 			
 				screen.addTowerCilcle();
+				
+				//screen.addBulletCilcle();
+				
 				count++;
 
 		}
+		
+		
 	});
 	}
-
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 }

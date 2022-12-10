@@ -1,10 +1,14 @@
 package team_f;
 
+import static team_f.Stage.mapdata;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -12,29 +16,60 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
 public class Bullet_circle extends Bullet_State {
-
+		int x;
+		int y; 
+		int px;
+		int py;
+		int pw;
+		int ph;
 	public Bullet_circle() {
 		
 		index_x = 0;
 		index_y = 0;
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
+		
 		frame_size = 1;
 		Power = 0;
 		//HP=100;
 		stop = false;
 		//move.Copydata();
 		try {
-			Bul = ImageIO.read(new File("team_f/src/Resource/tower-5.png"));
+			Bul = ImageIO.read(new File("team_f/src/Resource/Bullet-circlet.png"));
 			Bul = TransformColorToTransparency(Bul, new Color(45, 86, 56));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+
+	public void PointInv() {
+		x = (int) (Math.random() * (16 - 6 + 1) + 6); // 랜덤 x좌표
+		y = (int) (Math.random() * (14 - 4 + 1) + 4);
+		System.out.println(x);
+		System.out.println(y);
+
+		if ((x % 2) == 1) {
+			x = x - 1;
+		}
+		if ((y % 2) == 1) {
+			y = y - 1;
+		}
+		px = x * 30; //
+		py = y * 30;
+		pw = x / 30; //
+		ph = y / 30;
+		if (mapdata[y][x] == 0) {
+			mapdata[y][x] = 5;
+		}else {
+			PointInv();
 		}
 	}
 
@@ -64,21 +99,16 @@ public class Bullet_circle extends Bullet_State {
 		return dest;
 	}
 
-	public void drawBullet(Graphics g, Screen screen, int[] Point) {//타워 좌표 받으시
-		g.drawImage(Bul, Point[0], Point[1], // 위치
-				Point[0] + width + 20, Point[1] + height + 20, // 크기
-				width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
-				height * index_y + start_y + height, screen);
-		if (screen.getCount() % 100 == 0) {
-			if (index_x < frame_size - 1) {
-				index_x++;
-			} else {
-				if (!stop)
-					index_x = 0;
-				else
-					index_x = frame_size - 1;
-			}
+	public  void drawBcircle(Graphics g, Screen screen,int[][] Point) {
+
+		if (MainFrame.count >= 1) {
+				g.drawImage(Bul, px, py, // 위치
+						px + width + 30, py + height + 30, // 크기
+						width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
+						height * index_y + start_y + height, screen);
+			
 		}
+
 	}
 
 }
