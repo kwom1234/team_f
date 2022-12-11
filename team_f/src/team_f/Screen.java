@@ -25,10 +25,10 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	int nextMobT = 50;
 	int NextC = 0;
 	int count = 0;
-	private LinkedList<Point> mousePointList = new LinkedList<>();
 	private Point Bpoint = new Point();
+	public static int[] mousePoint = new int[2];
 	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
-	ArrayList<Bullet_circle> Bcircle = new ArrayList<Bullet_circle>();
+	
 	ArrayList<Monster_1> mob1 = new ArrayList<Monster_1>();
 	ArrayList<Monster_2> mob2 = new ArrayList<Monster_2>();
 	ArrayList<Monster_3> mob3 = new ArrayList<Monster_3>();
@@ -48,12 +48,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		System.out.println("추가?");
 	}
 	
-	public void addBulletCilcle() {
-			
-			Bcircle.add(new Bullet_circle());
-			
-			System.out.println("bullet");
-	}
+
 	public Screen() {
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -255,10 +250,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		for (Tower_Circle i : Tcircle) {
 			i.drawTower(g, this);
 		}
-		for (Bullet_circle i : Bcircle) {
-			i.drawBcircle(g, this, null);
-			
-		}
+
 	}
 
 	@Override
@@ -302,17 +294,16 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		Graphics g = getGraphics();
 		//Point point = e.getPoint();
 		Bpoint = e.getPoint();
-		mousePointList.add(Bpoint);
-		// TODO Auto-generated method stub
-		
-		Bullet_circle bullet_circle = new Bullet_circle();
-		//for(Point point : mousePointList) {
-		//}
-		addBulletCilcle();
-		System.out.println(Bpoint);
+		mousePoint[0] = Bpoint.x;
+		mousePoint[1]= Bpoint.y;
+		for(Tower_Circle i : Tcircle) {
+			i.addBullet();
+			//i.불릿 의 리스트 빼와서 그리기
+		}
+
 		//System.out.println(Bpoint.x);
 		//System.out.println(Bpoint.y);
-		bullet_circle.drawBcircle(g, this, null);
+	
 		repaint();
 	}
 

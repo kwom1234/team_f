@@ -28,8 +28,9 @@ public class Bullet_circle extends Bullet_State {
 		int py;
 		int pw;
 		int ph;
+		Circle_Bullet_Move move;
 	public Bullet_circle() {
-		
+		move= new Circle_Bullet_Move();
 		index_x = 0;
 		index_y = 0;
 		start_x = 0;// 그림상의 좌표
