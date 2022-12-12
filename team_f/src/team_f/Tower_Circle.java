@@ -26,7 +26,7 @@ public class Tower_Circle extends Tower_State {
 	int yy;
 	int w; //
 	int h;
-	ArrayList<Bullet_circle> bullet = new ArrayList<Bullet_circle>();
+	public ArrayList<Bullet_circle> bullet = new ArrayList<Bullet_circle>();
 	public Tower_Circle() {
 		// this.x= (int) (Math.random() *23);
 		// this.y=(int) (Math.random() *15);
@@ -53,14 +53,16 @@ public class Tower_Circle extends Tower_State {
 			e.printStackTrace();
 		}
 	}
-	public void SettingStartPoint() {
-		for(Bullet_circle b : bullet) {
+	public void SettingStartPoint(Bullet_circle b) {
+		
 			b.move.StartSetting(xx, yy);
 			b.move.lunch();
-		}
 	}
 	public void addBullet() {
-		bullet.add(new Bullet_circle());
+		Bullet_circle b = new Bullet_circle();
+		SettingStartPoint(b);
+		bullet.add(b);
+		
 	}
 	public void PointInv() {
 		x = (int) (Math.random() * (16 - 6 + 1) + 6); // 랜덤 x좌표

@@ -50,6 +50,8 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	
 
 	public Screen() {
+		mousePoint[0]= MoveMonster.StartX;
+		mousePoint[1]= MoveMonster.StartY;
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		mob1.add(new Monster_1());
@@ -59,16 +61,36 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				for(Tower_Circle t : Tcircle) {
+					for(Bullet_circle c : t.bullet) {
+						c.move.movepoint();
+					}
+				}
 				repaint();
 				counting();
 			}
 		}, 0, 1);
+		Timer Bullet_timer = new Timer();
+		Bullet_timer.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				for(Tower_Circle t : Tcircle) {
+					t.addBullet();
+				}
+				}
+
+			
+		}, 0, 1000);
+
 		Timer MoveTimer = new Timer();
 		MoveTimer.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				
 				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
@@ -249,8 +271,10 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		}
 		for (Tower_Circle i : Tcircle) {
 			i.drawTower(g, this);
+			for(Bullet_circle b : i.bullet) {
+				b.drawBcircle(g, this);
+			}
 		}
-
 	}
 
 	@Override

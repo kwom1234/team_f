@@ -22,12 +22,7 @@ import java.util.LinkedList;
 import javax.imageio.ImageIO;
 
 public class Bullet_circle extends Bullet_State {
-		int x;
-		int y; 
-		int px;
-		int py;
-		int pw;
-		int ph;
+
 		Circle_Bullet_Move move;
 	public Bullet_circle() {
 		move= new Circle_Bullet_Move();
@@ -51,28 +46,7 @@ public class Bullet_circle extends Bullet_State {
 		}
 	}
 
-	public void PointInv() {
-		x = (int) (Math.random() * (16 - 6 + 1) + 6); // 랜덤 x좌표
-		y = (int) (Math.random() * (14 - 4 + 1) + 4);
-		System.out.println(x);
-		System.out.println(y);
 
-		if ((x % 2) == 1) {
-			x = x - 1;
-		}
-		if ((y % 2) == 1) {
-			y = y - 1;
-		}
-		px = x * 30; //
-		py = y * 30;
-		pw = x / 30; //
-		ph = y / 30;
-		if (mapdata[y][x] == 0) {
-			mapdata[y][x] = 5;
-		}else {
-			PointInv();
-		}
-	}
 
 	protected BufferedImage TransformColorToTransparency(BufferedImage image, Color c1) {
 		final int r1 = c1.getRed();
@@ -100,11 +74,11 @@ public class Bullet_circle extends Bullet_State {
 		return dest;
 	}
 
-	public  void drawBcircle(Graphics g, Screen screen,int[][] Point) {
+	public  void drawBcircle(Graphics g, Screen screen) {
 
 		if (MainFrame.count >= 1) {
-				g.drawImage(Bul, px, py, // 위치
-						px + width + 30, py + height + 30, // 크기
+				g.drawImage(Bul, move.x,move.y, // 위치
+						move.x + width + 30, move.y + height + 30, // 크기
 						width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
 						height * index_y + start_y + height, screen);
 			
