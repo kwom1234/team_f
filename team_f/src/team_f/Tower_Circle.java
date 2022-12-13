@@ -35,7 +35,7 @@ public class Tower_Circle extends Tower_State {
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
-		Power = 0;
+		Power = 50;
 		Speed = 0;
 		stop = false;
 		PointInv();

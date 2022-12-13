@@ -58,13 +58,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame() {
 		
 	this.loadscreen=new LoadScreen();
-	//	startImage();
+		startImage();
 		
 		
 		
 		
 		
-		initialize();
+	//	initialize();
 	}
 
 	/**
@@ -332,7 +332,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		iconClose = new ImageIcon(
 		iconClose.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH));
 		frame.setTitle("타워디펜스");
-		frame.setBounds(100, 100, 730, 640);
+		frame.setBounds(100, 100, 730, 690);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
