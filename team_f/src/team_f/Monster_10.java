@@ -37,7 +37,7 @@ public class Monster_10 extends Monster_State {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}   
 	}
 
 	protected BufferedImage TransformColorToTransparency(BufferedImage image, Color c1) {

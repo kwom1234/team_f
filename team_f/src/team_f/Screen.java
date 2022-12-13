@@ -28,6 +28,10 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	private Point Bpoint = new Point();
 	public static int[] mousePoint = new int[2];
 	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
+	public static ArrayList<Tower_Canon> Tcanon = new ArrayList<Tower_Canon>();
+	public static ArrayList<Tower_Spark> Tspark= new ArrayList<Tower_Spark>();
+	public static ArrayList<Tower_Spider> Tspider = new ArrayList<Tower_Spider>();
+	
 
 	ArrayList<Monster_1> mob1 = new ArrayList<Monster_1>();
 	ArrayList<Monster_2> mob2 = new ArrayList<Monster_2>();
@@ -45,6 +49,21 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	public void addTowerCilcle() {
 
 		Tcircle.add(new Tower_Circle());
+		System.out.println("추가?");
+	}
+	public void addTowerCanon() {
+
+		Tcanon.add(new Tower_Canon());
+		System.out.println("추가?");
+	}
+	public void addTowerSpark() {
+
+		Tspark.add(new Tower_Spark());
+		System.out.println("추가?");
+	}
+	public void addTowerSpider() {
+
+		Tspider.add(new Tower_Spider());
 		System.out.println("추가?");
 	}
 
@@ -67,6 +86,37 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					break;
 					 }
 					}
+					
+				}
+				for (Tower_Canon t : Tcanon) {
+					for (Bullet_canon c : t.bullet) {
+						c.move.movepoint();
+						 if(c.move.x<0||c.move.y<0 || c.move.x>720 || c.move.y>480) { //총알 맵 범위 벗어났는가 확인하기
+					t.bullet.remove(c);
+					break;
+					 }
+					}
+					
+				}
+				for (Tower_Spark t : Tspark) {
+					for (Bullet_spark c : t.bullet) {
+						c.move.movepoint();
+						 if(c.move.x<0||c.move.y<0 || c.move.x>720 || c.move.y>480) { //총알 맵 범위 벗어났는가 확인하기
+					t.bullet.remove(c);
+					break;
+					 }
+					}
+					
+				}
+				for (Tower_Spider t : Tspider) {
+					for (Bullet_web c : t.bullet) {
+						c.move.movepoint();
+						 if(c.move.x<0||c.move.y<0 || c.move.x>720 || c.move.y>480) { //총알 맵 범위 벗어났는가 확인하기
+					t.bullet.remove(c);
+					break;
+					 }
+					}
+					
 				}
 				repaint();
 				counting();
@@ -79,6 +129,15 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			public void run() {
 				// TODO Auto-generated method stub
 				for (Tower_Circle t : Tcircle) {
+					t.addBullet();
+				}
+				for (Tower_Canon t : Tcanon) {
+					t.addBullet();
+				}
+				for (Tower_Spark t : Tspark) {
+					t.addBullet();
+				}
+				for (Tower_Spider t : Tspider) {
 					t.addBullet();
 				}
 			}
@@ -95,6 +154,36 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
@@ -125,6 +214,36 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							}
 						}
 					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if (i.HP <= 0) {
 						mob1.remove(i);
 						break;
@@ -136,16 +255,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_3 i : mob3) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -157,16 +306,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_4 i : mob4) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -178,16 +357,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_5 i : mob5) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -199,16 +408,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_6 i : mob6) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -220,16 +459,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_7 i : mob7) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
-										t.bullet.remove(c);
-								i.HP -=10;
+								t.bullet.remove(c);
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -241,16 +510,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_8 i : mob8) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -262,16 +561,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_9 i : mob9) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -283,16 +612,46 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_10 i : mob10) {
-					for(Tower_Circle t : Tcircle) {
-						for(Bullet_circle c : t.bullet) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -=10;
+								i.HP -= 10;
 								break;
 							}
 						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
 						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					if(i.HP<=0) {
 						mob1.remove(i);
 						break;
@@ -411,6 +770,24 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		for (Tower_Circle i : Tcircle) {
 			i.drawTower(g, this);
 			for (Bullet_circle b : i.bullet) {
+				b.drawBcircle(g, this);
+			}
+		}
+		for (Tower_Canon i : Tcanon) {
+			i.drawTower(g, this);
+			for (Bullet_canon b : i.bullet) {
+				b.drawBcircle(g, this);
+			}
+		}
+		for (Tower_Spark i : Tspark) {
+			i.drawTower(g, this);
+			for (Bullet_spark b : i.bullet) {
+				b.drawBcircle(g, this);
+			}
+		}
+		for (Tower_Spider i : Tspider) {
+			i.drawTower(g, this);
+			for (Bullet_web b : i.bullet) {
 				b.drawBcircle(g, this);
 			}
 		}

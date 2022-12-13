@@ -37,7 +37,7 @@ public class Bullet_web extends Bullet_State {
 		stop = false;
 		//move.Copydata();
 		try {
-			Bul = ImageIO.read(new File("team_f/src/Resource/Bullet-circlet.png"));
+			Bul = ImageIO.read(new File("team_f/src/Resource/Bullet-spider.png"));
 			Bul = TransformColorToTransparency(Bul, new Color(45, 86, 56));
 
 		} catch (IOException e) {
