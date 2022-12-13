@@ -1,7 +1,6 @@
 package team_f;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,15 +21,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.LinkedList;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Point;
 
 import javax.swing.border.LineBorder;
 import javax.swing.BoxLayout;
@@ -45,7 +41,6 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import java.awt.Font;
-import java.awt.Graphics;
 
 public class MainFrame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -7314136332860432911L;
@@ -54,22 +49,18 @@ public class MainFrame extends JFrame implements ActionListener {
 	public static JFrame Start;
 	private LoadScreen loadscreen;
 	private JButton gameStart;
-	private JTextField difficulty;
-	private JTextField textField;
 	public static int Setting;
 	public static int count;
-	//private LinkedList<Point> mousePointList = new LinkedList<>();
-	//private Point Bpoint = new Point();
 
 	/**
 	 * Create the application.
 	 */
 	public MainFrame() {
 		
-		this.loadscreen=new LoadScreen();
+	this.loadscreen=new LoadScreen();
 		startImage();
 		
-		//screen.addBulletCilcle();
+		
 		
 		
 		
@@ -115,25 +106,11 @@ public class MainFrame extends JFrame implements ActionListener {
 							e.printStackTrace();
 						}
 					}
-					
 				});
 			
 				
 			}
 		});
-		
-		difficulty = new JTextField();
-		difficulty.setHorizontalAlignment(SwingConstants.CENTER);
-		difficulty.setFont(new Font("굴림", Font.BOLD, 28));
-		difficulty.setText("0");
-		difficulty.setColumns(10);
-		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setEditable(false);
-		textField.setFont(new Font("굴림", Font.BOLD, 15));
-		textField.setText("난이도 설정(0~6)");
-		textField.setColumns(10);
 		
 		JButton gameStart_1 = new JButton("쉬움(Easy) / 0");
 		gameStart_1.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -206,46 +183,33 @@ public class MainFrame extends JFrame implements ActionListener {
 		gameStart_2.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addGap(20)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(49))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)))
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-							.addGap(39)
-							.addComponent(gameStart_2, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(94, Short.MAX_VALUE))
+			gl_panel.createParallelGroup(Alignment.LEADING)
+	
+			.addGroup(gl_panel.createSequentialGroup()
+					.addGap(32)
+					.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addGap(77)
+					.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+					.addComponent(gameStart_2, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(23)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(gameStart_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(difficulty, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(30, Short.MAX_VALUE))
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(gameStart_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addComponent(gameStart, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(90, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		Start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 	}
-
 	private void initialize() {
 		this.screen = new Screen();
 		frame = new JFrame();
@@ -256,8 +220,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		
 		JButton btnNewButton_1 = new JButton("스킬 사용");
-		
-		//btnNewButton_1.addActionListener(this);
 		
 		JButton btnNewButton_2 = new JButton("포탑 강화");
 		
@@ -337,26 +299,19 @@ public class MainFrame extends JFrame implements ActionListener {
 		frame.setTitle("타워디펜스");
 		frame.setBounds(100, 100, 730, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		btnNewButton_3.addActionListener(new ActionListener() {
+		btnNewButton_3.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
 			public void actionPerformed(ActionEvent e) {
 			
 				screen.addTowerCilcle();
-				
-				//screen.addBulletCilcle();
-				
 				count++;
 
 		}
-		
-		
 	});
 	}
-	
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-	
 }
