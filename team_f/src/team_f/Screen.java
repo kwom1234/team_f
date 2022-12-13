@@ -16,7 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
 
-public class Screen extends Canvas implements Runnable, MouseListener, MouseMotionListener  {
+public class Screen extends Canvas implements Runnable, MouseListener, MouseMotionListener {
 	private static final long serialVersionUID = -7314136332860432911L;
 	public static Dimension dim;
 	public static Image offscreen;
@@ -28,7 +28,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	private Point Bpoint = new Point();
 	public static int[] mousePoint = new int[2];
 	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
-	
+
 	ArrayList<Monster_1> mob1 = new ArrayList<Monster_1>();
 	ArrayList<Monster_2> mob2 = new ArrayList<Monster_2>();
 	ArrayList<Monster_3> mob3 = new ArrayList<Monster_3>();
@@ -43,15 +43,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	// ImageIcon background = new
 	// ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public void addTowerCilcle() {
-		
+
 		Tcircle.add(new Tower_Circle());
 		System.out.println("추가?");
 	}
-	
 
 	public Screen() {
-		mousePoint[0]= MoveMonster.StartX;
-		mousePoint[1]= MoveMonster.StartY;
+
 		addMouseListener(this);
 		addMouseMotionListener(this);
 		mob1.add(new Monster_1());
@@ -61,9 +59,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				for(Tower_Circle t : Tcircle) {
-					for(Bullet_circle c : t.bullet) {
+				for (Tower_Circle t : Tcircle) {
+					for (Bullet_circle c : t.bullet) {
 						c.move.movepoint();
+						 if(c.move.x<0||c.move.y<0 || c.move.x>720 || c.move.y>480) { //총알 맵 범위 벗어났는가 확인하기
+					t.bullet.remove(c);
+					break;
+					 }
 					}
 				}
 				repaint();
@@ -76,12 +78,11 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				for(Tower_Circle t : Tcircle) {
+				for (Tower_Circle t : Tcircle) {
 					t.addBullet();
 				}
-				}
+			}
 
-			
 		}, 0, 1000);
 
 		Timer MoveTimer = new Timer();
@@ -90,18 +91,44 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				
+
 				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
 					i.move.MovePoint();
+					if (i.HP <= 0) {
+						mob1.remove(i);
+						break;
+					}
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
-																														// 끝에
-																														// 닿으면
-																														// 삭제
+						// 삭제
 						mob1.remove(i);
 						break;// 포문이 지속될시 오류
 					}
 				}
 				for (Monster_2 i : mob2) {
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= 10;
+								break;
+							}
+						}
+					}
+					if (i.HP <= 0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob2.remove(i);
@@ -109,6 +136,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_3 i : mob3) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob3.remove(i);
@@ -116,6 +157,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_4 i : mob4) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob4.remove(i);
@@ -123,6 +178,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_5 i : mob5) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob5.remove(i);
@@ -130,6 +199,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_6 i : mob6) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob6.remove(i);
@@ -137,6 +220,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_7 i : mob7) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+										t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob7.remove(i);
@@ -144,6 +241,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_8 i : mob8) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob8.remove(i);
@@ -151,6 +262,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_9 i : mob9) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob9.remove(i);
@@ -158,6 +283,20 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 				}
 				for (Monster_10 i : mob10) {
+					for(Tower_Circle t : Tcircle) {
+						for(Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -=10;
+								break;
+							}
+						}
+						}
+					if(i.HP<=0) {
+						mob1.remove(i);
+						break;
+					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob10.remove(i);
@@ -208,22 +347,22 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	}
 
 	// 더블 버퍼링
-	public void initBufferd(Graphics g) { 
-        dim = getSize(); 
-        //화면의 크기를 가져온다. 
-        offscreen = createImage(dim.width,dim.height);
-        //화면 크기와 똑같은 가상 버퍼(이미지)를 생성한다.
-        bufferGraphics = offscreen.getGraphics(); 
-        //가상버퍼(이미지)로 부터 그래픽스 객체를 얻어옴
-        update(g);
-     }
+	public void initBufferd(Graphics g) {
+		dim = getSize();
+		// 화면의 크기를 가져온다.
+		offscreen = createImage(dim.width, dim.height);
+		// 화면 크기와 똑같은 가상 버퍼(이미지)를 생성한다.
+		bufferGraphics = offscreen.getGraphics();
+		// 가상버퍼(이미지)로 부터 그래픽스 객체를 얻어옴
+		update(g);
+	}
+
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
 		offscreen = createImage(1050, 650);
 		bufferGraphics = offscreen.getGraphics();
 		update(g);
-		
-		
+
 	}
 
 	// 더블 버퍼링
@@ -271,7 +410,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		}
 		for (Tower_Circle i : Tcircle) {
 			i.drawTower(g, this);
-			for(Bullet_circle b : i.bullet) {
+			for (Bullet_circle b : i.bullet) {
 				b.drawBcircle(g, this);
 			}
 		}
@@ -293,7 +432,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		}
 
 	}
-	
+
 	// 세팅값 지정
 	public void Setting(int a) {
 		map.setting = a;
@@ -302,57 +441,53 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 		Graphics g = getGraphics();
-		//Point point = e.getPoint();
+		// Point point = e.getPoint();
 		Bpoint = e.getPoint();
 		mousePoint[0] = Bpoint.x;
-		mousePoint[1]= Bpoint.y;
-		for(Tower_Circle i : Tcircle) {
-			i.addBullet();
-			//i.불릿 의 리스트 빼와서 그리기
-		}
+		mousePoint[1] = Bpoint.y;
 
-		//System.out.println(Bpoint.x);
-		//System.out.println(Bpoint.y);
-	
+		// System.out.println(Bpoint.x);
+		// System.out.println(Bpoint.y);
+
 		repaint();
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

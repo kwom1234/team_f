@@ -77,8 +77,8 @@ public class Bullet_circle extends Bullet_State {
 	public  void drawBcircle(Graphics g, Screen screen) {
 
 		if (MainFrame.count >= 1) {
-				g.drawImage(Bul, move.x,move.y, // 위치
-						move.x + width + 30, move.y + height + 30, // 크기
+				g.drawImage(Bul, (int)move.x,(int)move.y, // 위치
+						(int)move.x + width + 30, (int)move.y + height + 30, // 크기
 						width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
 						height * index_y + start_y + height, screen);
 			

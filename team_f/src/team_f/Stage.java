@@ -12,7 +12,7 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
-
+import static team_f.Screen.mousePoint;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import static team_f.MainFrame.Setting;
@@ -171,6 +171,8 @@ public class Stage {
 			mapdata[0][12]=1;
 			
 		}
+		mousePoint[0]= MoveMonster.StartX;
+		mousePoint[1]= MoveMonster.StartY;
 	}
 	
 	protected BufferedImage TransformColorToTransparency(BufferedImage image, Color c1) {

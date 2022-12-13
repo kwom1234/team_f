@@ -26,7 +26,7 @@ public class Monster_5 extends Monster_State {
 		start_y = 0;
 		frame_size = 6;
 		Power = 0;
-		HP=100;
+		HP=140;
 		stop = false;
 		move.Copydata();
 		try {

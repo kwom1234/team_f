@@ -5,8 +5,9 @@ public class Circle_Bullet_Move {
 	int StartY;	
 	int EndX;
 	int EndY;
-	int x;
-	int y;
+	double x=720;
+	double y=480;
+	double vx , vy;
 	public Circle_Bullet_Move() {
 		this.EndX = mousePoint[0];
 		this.EndY = mousePoint[1];
@@ -18,13 +19,17 @@ public class Circle_Bullet_Move {
 		y = StartY;
 		x = StartX;
 
+
 	}
 	public void lunch() { //마우스 위치 포인트
 		this.EndX = mousePoint[0];
 		this.EndY = mousePoint[1];
+		double d = Math.sqrt(Math.pow((EndX - StartX), 2) + Math.pow((EndY - StartY), 2));
+		vx = ((EndX - StartX) / d * 1);
+		 vy =((EndY - StartY) / d * 1); 
 	}
 	public void movepoint() { // 좌표 계산할부분
-	if((StartX - EndX)> 0) {
+	/*if((StartX - EndX)> 0) {
 	x= x-1;
 	 y = ((EndY - StartY) / (EndX - StartX))*(x - StartX) +StartY;
 	}else if((StartX- EndX) ==0) {
@@ -33,9 +38,9 @@ public class Circle_Bullet_Move {
 		x= x+1;
 		 y = ((EndY - StartY) / (EndX - StartX))*(x - StartX) +StartY;
 			
-	}
-	
-	
+	}*/
+		x += vx;
+		y += vy;  
 	
 	
 	
