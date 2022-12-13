@@ -2,7 +2,7 @@ package team_f;
 import static team_f.Screen.mousePoint;
 public class Circle_Bullet_Move {
 	int StartX;
-	int StartY;	
+	int StartY;
 	int EndX;
 	int EndY;
 	double x=720;
@@ -13,7 +13,7 @@ public class Circle_Bullet_Move {
 		this.EndY = mousePoint[1];
 	}
 	public void StartSetting(int Sx, int Sy) {//타워 서클의 xx와 yy 받아올것 총알의 시작 포인트 설정
-		this.StartX = Sx; 
+		this.StartX = Sx;
 		this.StartY= Sy;
 		
 		y = StartY;

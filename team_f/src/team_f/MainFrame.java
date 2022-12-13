@@ -337,7 +337,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		frame.setTitle("타워디펜스");
 		frame.setBounds(100, 100, 730, 640);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		btnNewButton_3.addActionListener(new ActionListener() {// 게임시작 버튼 누르면 게임화면으로 넘어감
+		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
 				screen.addTowerCilcle();
