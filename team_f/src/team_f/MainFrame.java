@@ -58,13 +58,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame() {
 		
 	this.loadscreen=new LoadScreen();
-		startImage();
+	//	startImage();
 		
 		
 		
 		
 		
-	//	initialize();
+		initialize();
 	}
 
 	/**
@@ -226,14 +226,17 @@ public class MainFrame extends JFrame implements ActionListener {
 		});
 		
 		JButton TowerCreatButton_2 = new JButton("Canon Creat");
+		TowerCreatButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon.png")));
 		TowerCreatButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton TowerCreatButton_3 = new JButton("Spider Creat");
+		TowerCreatButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider.png")));
 		
 		JButton TowerCreatButton_4 = new JButton("Spark Creat");
+		TowerCreatButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spark.png")));
 		
 		JButton TowerUpgradeButton_1 = new JButton("Circle Upgrade");
 		
@@ -243,48 +246,49 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		JButton TowerUpgradeButton_4 = new JButton("Spark Upgrade");
 		
-		JButton TowerCreatButton_4_1_1 = new JButton("Spark Sell");
-		TowerCreatButton_4_1_1.addActionListener(new ActionListener() {
+		JButton TowerSellButton_4 = new JButton("Spark Sell");
+		TowerSellButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JButton TowerCreatButton_3_1_1 = new JButton("Spider Sell");
-		TowerCreatButton_3_1_1.addActionListener(new ActionListener() {
+		JButton TowerSellButton_3 = new JButton("Spider Sell");
+		TowerSellButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JButton TowerCreatButton_2_1_1 = new JButton("Canon Sell");
+		JButton TowerSellButton_2 = new JButton("Canon Sell");
 		
-		JButton TowerCreatButton_1_1_1 = new JButton("Circle Sell");
-		TowerCreatButton_1_1_1.addActionListener(new ActionListener() {
+		JButton TowerSellButton_1 = new JButton("Circle Sell");
+		TowerSellButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		GroupLayout gl_TowerPanel = new GroupLayout(TowerPanel);
 		gl_TowerPanel.setHorizontalGroup(
-			gl_TowerPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_TowerPanel.createSequentialGroup()
+			gl_TowerPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_TowerPanel.createSequentialGroup()
 					.addGap(112)
-					.addGroup(gl_TowerPanel.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_TowerPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_TowerPanel.createSequentialGroup()
 							.addComponent(TowerUpgradeButton_1, 0, 0, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(TowerUpgradeButton_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(TowerUpgradeButton_3, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(TowerUpgradeButton_4, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(TowerUpgradeButton_4, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addGap(12))
 						.addGroup(gl_TowerPanel.createSequentialGroup()
-							.addComponent(TowerCreatButton_1_1_1, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+							.addComponent(TowerSellButton_1, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(TowerCreatButton_2_1_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+							.addComponent(TowerSellButton_2, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(TowerCreatButton_3_1_1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+							.addComponent(TowerSellButton_3, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(TowerCreatButton_4_1_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_TowerPanel.createSequentialGroup()
+							.addComponent(TowerSellButton_4, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_TowerPanel.createSequentialGroup()
 							.addComponent(TowerCreatButton_1)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(TowerCreatButton_2)
@@ -304,23 +308,22 @@ public class MainFrame extends JFrame implements ActionListener {
 						.addComponent(TowerCreatButton_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(TowerCreatButton_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_TowerPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_TowerPanel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(TowerUpgradeButton_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-							.addComponent(TowerUpgradeButton_2)
-							.addComponent(TowerUpgradeButton_1))
+					.addGroup(gl_TowerPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(TowerUpgradeButton_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(TowerUpgradeButton_2)
+						.addComponent(TowerUpgradeButton_1)
 						.addComponent(TowerUpgradeButton_4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_TowerPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_TowerPanel.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addGroup(gl_TowerPanel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(TowerCreatButton_4_1_1, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-								.addComponent(TowerCreatButton_3_1_1, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-								.addComponent(TowerCreatButton_2_1_1))
+								.addComponent(TowerSellButton_4, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+								.addComponent(TowerSellButton_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+								.addComponent(TowerSellButton_2))
 							.addContainerGap())
 						.addGroup(gl_TowerPanel.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(TowerCreatButton_1_1_1)
+							.addComponent(TowerSellButton_1)
 							.addContainerGap())))
 		);
 		TowerPanel.setLayout(gl_TowerPanel);
