@@ -26,7 +26,7 @@ public class Tower_Spider extends Tower_State {
 	int yy;
 	int w; //
 	int h;
-	public ArrayList<Bullet_circle> bullet = new ArrayList<Bullet_circle>();
+	public ArrayList<Bullet_web> bullet = new ArrayList<Bullet_web>();
 	public Tower_Spider() {
 		// this.x= (int) (Math.random() *23);
 		// this.y=(int) (Math.random() *15);
@@ -53,13 +53,13 @@ public class Tower_Spider extends Tower_State {
 			e.printStackTrace();
 		}
 	}
-	public void SettingStartPoint(Bullet_circle b) {
+	public void SettingStartPoint(Bullet_web b) {
 		
 			b.move.StartSetting(xx, yy);
 			b.move.lunch();
 	}
 	public void addBullet() {
-		Bullet_circle b = new Bullet_circle();
+		Bullet_web b = new Bullet_web();
 		SettingStartPoint(b);
 		bullet.add(b);
 		

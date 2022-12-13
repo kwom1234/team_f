@@ -1,10 +1,14 @@
 package team_f;
 
+import static team_f.Stage.mapdata;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -12,24 +16,28 @@ import java.awt.image.ImageProducer;
 import java.awt.image.RGBImageFilter;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
 public class Bullet_canon extends Bullet_State {
 
+		Canon_Bullet_Move move;
 	public Bullet_canon() {
-		
+		move= new Canon_Bullet_Move();
 		index_x = 0;
 		index_y = 0;
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
+		
 		frame_size = 1;
 		Power = 0;
 		//HP=100;
 		stop = false;
 		//move.Copydata();
 		try {
-			Bul = ImageIO.read(new File("team_f/src/Resource/tower-5.png"));
+			Bul = ImageIO.read(new File("team_f/src/Resource/Bullet-circlet.png"));
 			Bul = TransformColorToTransparency(Bul, new Color(45, 86, 56));
 
 		} catch (IOException e) {
@@ -37,6 +45,8 @@ public class Bullet_canon extends Bullet_State {
 			e.printStackTrace();
 		}
 	}
+
+
 
 	protected BufferedImage TransformColorToTransparency(BufferedImage image, Color c1) {
 		final int r1 = c1.getRed();
@@ -64,21 +74,16 @@ public class Bullet_canon extends Bullet_State {
 		return dest;
 	}
 
-	public void drawBullet(Graphics g, Screen screen, int[] Point) {//타워 좌표 받으시
-		g.drawImage(Bul, Point[0], Point[1], // 위치
-				Point[0] + width + 20, Point[1] + height + 20, // 크기
-				width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
-				height * index_y + start_y + height, screen);
-		if (screen.getCount() % 100 == 0) {
-			if (index_x < frame_size - 1) {
-				index_x++;
-			} else {
-				if (!stop)
-					index_x = 0;
-				else
-					index_x = frame_size - 1;
-			}
+	public  void drawBcircle(Graphics g, Screen screen) {
+
+		if (MainFrame.count >= 1) {
+				g.drawImage(Bul, (int)move.x,(int)move.y, // 위치
+						(int)move.x + width + 30, (int)move.y + height + 30, // 크기
+						width * index_x + start_x, height * index_y + start_y, width * index_x + +start_x + width,
+						height * index_y + start_y + height, screen);
+			
 		}
+
 	}
 
 }

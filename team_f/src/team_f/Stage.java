@@ -70,19 +70,13 @@ public class Stage {
 			mapdata[6][4] = 1;
 			mapdata[5][4] = 1;
 			mapdata[4][4] = 1;
-			mapdata[4][3] = 1;
-			mapdata[4][2] = 1;
-			mapdata[4][1] = 1;
-			mapdata[3][1] = 1;
-			mapdata[2][1] = 1;
+			mapdata[3][4] = 1;
+	
+
 			
-			for(int i=1;i<23;i++) {
-				mapdata[1][i]=1;
+			for(int i=4;i<20;i++) {
+				mapdata[2][i]=1;
 			}
-			mapdata[2][22] = 1;
-			mapdata[3][22] = 1;
-			mapdata[3][21] = 1;
-			mapdata[3][20] = 1;
 			mapdata[3][19] = 1;
 			mapdata[4][19] = 1;
 			mapdata[5][19] = 1;

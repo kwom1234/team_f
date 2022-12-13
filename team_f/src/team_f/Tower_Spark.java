@@ -26,7 +26,7 @@ public class Tower_Spark extends Tower_State {
 	int yy;
 	int w; //
 	int h;
-	public ArrayList<Bullet_circle> bullet = new ArrayList<Bullet_circle>();
+	public ArrayList<Bullet_spark> bullet = new ArrayList<Bullet_spark>();
 	public Tower_Spark() {
 		// this.x= (int) (Math.random() *23);
 		// this.y=(int) (Math.random() *15);
@@ -53,13 +53,13 @@ public class Tower_Spark extends Tower_State {
 			e.printStackTrace();
 		}
 	}
-	public void SettingStartPoint(Bullet_circle b) {
+	public void SettingStartPoint(Bullet_spark b) {
 		
 			b.move.StartSetting(xx, yy);
 			b.move.lunch();
 	}
 	public void addBullet() {
-		Bullet_circle b = new Bullet_circle();
+		Bullet_spark b = new Bullet_spark();
 		SettingStartPoint(b);
 		bullet.add(b);
 		
