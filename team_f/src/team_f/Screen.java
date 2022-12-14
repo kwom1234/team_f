@@ -26,6 +26,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	public static Image offscreen;
 	public static Graphics bufferGraphics;
 	Stage map = new Stage();
+	Life life = new Life();
 	int nextMobT = 50;
 	int NextC = 0;
 	int count = 0;
@@ -83,6 +84,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				try {
 				for (Tower_Circle t : Tcircle) {
 					for (Bullet_circle c : t.bullet) {
 						c.move.movepoint();
@@ -122,6 +124,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					 }
 					}
 					
+				}
+				}catch (Exception e) {
+					// TODO: handle exception
 				}
 				repaint();
 				counting();
@@ -740,6 +745,8 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						mob9.add(new Monster_9());
 					} else if (count < 500) {
 						mob10.add(new Monster_10());
+					} else if( count > 500) {
+						restart();
 					}
 					NextC = 0;
 				}
@@ -768,6 +775,10 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		 mob8 = new ArrayList<Monster_8>();
 		 mob9 = new ArrayList<Monster_9>();
 		 mob10 = new ArrayList<Monster_10>();
+			Tcircle = new ArrayList<Tower_Circle>();
+			 Tcanon = new ArrayList<Tower_Canon>();
+			Tspark= new ArrayList<Tower_Spark>();
+			Tspider = new ArrayList<Tower_Spider>();
 		player.Gold=100;
 		player.HP=3;
 		player.TowerCircle = 0;//강화단계
@@ -819,6 +830,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		// 배경
 		map.background(g);
 		map.map(g);
+		life.drawlife(g);
 		try {
 			for (Monster_1 i : mob1) {
 				i.drawMonster(g, this, i.move.Point);
