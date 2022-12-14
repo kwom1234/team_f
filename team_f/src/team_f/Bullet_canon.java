@@ -21,7 +21,7 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-public class Bullet_canon extends Bullet_State {
+public class Bullet_canon extends Bullet_Canon_State {
 
 		Canon_Bullet_Move move;
 	public Bullet_canon() {

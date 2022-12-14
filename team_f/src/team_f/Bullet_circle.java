@@ -21,7 +21,7 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-public class Bullet_circle extends Bullet_State {
+public class Bullet_circle extends Bullet_Circle_State {
 
 		Circle_Bullet_Move move;
 	public Bullet_circle() {

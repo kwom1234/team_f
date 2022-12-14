@@ -21,7 +21,7 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-public class Bullet_web extends Bullet_State {
+public class Bullet_web extends Bullet_Web_State {
 
 		Web_Bullet_Move move;
 	public Bullet_web() {

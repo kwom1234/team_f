@@ -21,7 +21,7 @@ import java.util.LinkedList;
 
 import javax.imageio.ImageIO;
 
-public class Bullet_spark extends Bullet_State {
+public class Bullet_spark extends Bullet_Spark_State {
 
 		Spark_Bullet_Move move;
 	public Bullet_spark() {
