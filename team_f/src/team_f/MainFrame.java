@@ -219,17 +219,27 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerCreatButton_1.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-magic2.png")));
 		TowerCreatButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				screen.addTowerCilcle();
-				count++;
-			}
+				if(Gold >=50) {
+					screen.addTowerCilcle();
+					count++;
+					Gold -= 50;
+					GoldState_TextField.setText(Integer.toString(Gold));
+
+				}
+					}
 		});
 
 		JButton TowerCreatButton_2 = new JButton("Canon Creat");
 		TowerCreatButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon.png")));
 		TowerCreatButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(Gold >=50) {
 				screen.addTowerCanon();
 				count++;
+				Gold -= 50;
+				GoldState_TextField.setText(Integer.toString(Gold));
+
+				}
 			}
 		});
 
@@ -237,8 +247,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerCreatButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider.png")));
 		TowerCreatButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(Gold >=50) {
 				screen.addTowerSpider();
 				count++;
+				Gold -= 50;
+				GoldState_TextField.setText(Integer.toString(Gold));
+
+				}
 			}
 		});
 
@@ -246,8 +261,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerCreatButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spark.png")));
 		TowerCreatButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(Gold >=50) {
 				screen.addTowerSpark();
 				count++;
+				Gold -= 50;
+				GoldState_TextField.setText(Integer.toString(Gold));
+
+				}
 			}
 		});
 
