@@ -157,7 +157,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -167,7 +167,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -177,7 +177,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -187,7 +187,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -203,13 +203,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;// 포문이 지속될시 오류
 					}
 				}
+				
+				
+				
+				
 				for (Monster_2 i : mob2) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -219,7 +223,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -229,7 +233,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -239,28 +243,32 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
+					i.move.MovePoint();
 					if (i.HP <= 0) {
-						mob1.remove(i);
+						mob2.remove(i);
 						break;
 					}
-					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						mob2.remove(i);
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_3 i : mob3) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -270,7 +278,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -280,7 +288,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -290,13 +298,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob3.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -305,13 +313,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_4 i : mob4) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -321,7 +333,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -331,7 +343,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -341,13 +353,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob4.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -356,13 +368,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_5 i : mob5) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -372,7 +388,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -382,7 +398,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -392,13 +408,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob5.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -407,13 +423,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_6 i : mob6) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -423,7 +443,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -433,7 +453,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -443,13 +463,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob6.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -458,13 +478,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_7 i : mob7) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -474,7 +498,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -484,7 +508,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -494,13 +518,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob7.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -509,13 +533,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_8 i : mob8) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -525,7 +553,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -535,7 +563,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -545,13 +573,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob8.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -560,13 +588,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_9 i : mob9) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -576,7 +608,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -586,7 +618,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -596,13 +628,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob9.remove(i);
 						break;
 					}
 					i.move.MovePoint();
@@ -611,13 +643,17 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				
+				
+				
 				for (Monster_10 i : mob10) {
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -627,7 +663,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -637,7 +673,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
@@ -647,13 +683,13 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
 								t.bullet.remove(c);
-								i.HP -= 10;
+								i.HP -= t.Power;
 								break;
 							}
 						}
 					}
 					if(i.HP<=0) {
-						mob1.remove(i);
+						mob10.remove(i);
 						break;
 					}
 					i.move.MovePoint();

@@ -58,13 +58,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	public MainFrame() {
 		
 	this.loadscreen=new LoadScreen();
-	//	startImage();
+		startImage();
 		
 		
 		
 		
 		
-		initialize();
+	//	initialize();
 	}
 
 	/**
@@ -229,15 +229,27 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerCreatButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon.png")));
 		TowerCreatButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				screen.addTowerCanon();
+				count++;
 			}
 		});
 		
 		JButton TowerCreatButton_3 = new JButton("Spider Creat");
 		TowerCreatButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider.png")));
-		
+		TowerCreatButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				screen.addTowerSpider();
+				count++;
+			}
+		});
 		JButton TowerCreatButton_4 = new JButton("Spark Creat");
 		TowerCreatButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spark.png")));
-		
+		TowerCreatButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				screen.addTowerSpark();
+				count++;
+			}
+		});
 		JButton TowerUpgradeButton_1 = new JButton("Circle Upgrade");
 		
 		JButton TowerUpgradeButton_2 = new JButton("Canon Upgrade");
@@ -332,7 +344,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		iconClose = new ImageIcon(
 		iconClose.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH));
 		frame.setTitle("타워디펜스");
-		frame.setBounds(100, 100, 730, 640);
+		frame.setBounds(100, 100, 730, 690);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 

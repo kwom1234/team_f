@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import static team_f.Stage.mapdata;
 import javax.imageio.ImageIO;
 
+
 public class Tower_Spider extends Tower_State {
-	
 	public static int x; // 랜덤 x좌표
 	public static int y; // 랜덤 y좌표
 	int xx; //
@@ -54,7 +54,6 @@ public class Tower_Spider extends Tower_State {
 		}
 	}
 	public void SettingStartPoint(Bullet_web b) {
-		
 			b.move.StartSetting(xx, yy);
 			b.move.lunch();
 	}
