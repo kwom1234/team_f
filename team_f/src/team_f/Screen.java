@@ -15,7 +15,11 @@ import java.util.LinkedList;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
-
+import static team_f.Player_State.Gold;
+import static team_f.MainFrame.GoldState_TextField;
+import static team_f.MainFrame.frame;
+import static team_f.MainFrame.Start;
+import static team_f.Main.window;
 public class Screen extends Canvas implements Runnable, MouseListener, MouseMotionListener {
 	private static final long serialVersionUID = -7314136332860432911L;
 	public static Dimension dim;
@@ -25,6 +29,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	int nextMobT = 50;
 	int NextC = 0;
 	int count = 0;
+	Player_State player = new Player_State();
 	private Point Bpoint = new Point();
 	public static int[] mousePoint = new int[2];
 	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
@@ -150,7 +155,8 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-
+				try {
+					
 				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
@@ -194,11 +200,15 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.HP <= 0) {
+						Gold += 10;
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob1.remove(i);
 						break;
 					}
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
 						// 삭제
+						player.HP -= 1;
 						mob1.remove(i);
 						break;// 포문이 지속될시 오류
 					}
@@ -254,6 +264,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob2.remove(i);
 						break;
 					}
@@ -309,6 +320,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob3.remove(i);
 						break;
 					}
@@ -364,6 +376,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob4.remove(i);
 						break;
 					}
@@ -419,6 +432,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob5.remove(i);
 						break;
 					}
@@ -474,6 +488,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob6.remove(i);
 						break;
 					}
@@ -529,6 +544,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob7.remove(i);
 						break;
 					}
@@ -584,6 +600,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob8.remove(i);
 						break;
 					}
@@ -639,6 +656,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob9.remove(i);
 						break;
 					}
@@ -694,6 +712,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
+						player.HP -= 1;
 						mob10.remove(i);
 						break;
 					}
@@ -724,13 +743,40 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					NextC = 0;
 				}
+				if(player.HP <=0) {
+					restart();
+
+				}
+				System.out.println(player.HP);
 //				mob.move.MovePoint();
 
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 		}, 0, 10);
 
 	}
-
+	public void restart() {
+	 mob1 = new ArrayList<Monster_1>();
+	 mob2 = new ArrayList<Monster_2>();
+	mob3 = new ArrayList<Monster_3>();
+		 mob4 = new ArrayList<Monster_4>();
+		 mob5 = new ArrayList<Monster_5>();
+		 mob6 = new ArrayList<Monster_6>();
+		 mob7 = new ArrayList<Monster_7>();
+		 mob8 = new ArrayList<Monster_8>();
+		 mob9 = new ArrayList<Monster_9>();
+		 mob10 = new ArrayList<Monster_10>();
+		player.Gold=100;
+		player.HP=3;
+		player.TowerCircle = 0;//강화단계
+		player.TowerCannon = 0;
+		player.TowerSpyder = 0;
+		player.TowerSpark = 0;
+		Stage.mapdata =  new int[16][24];
+		window.restart();
+	}
 	private int countNumber = 0;
 
 	public void counting() {
@@ -773,60 +819,65 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		// 배경
 		map.background(g);
 		map.map(g);
-		for (Monster_1 i : mob1) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_2 i : mob2) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_3 i : mob3) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_4 i : mob4) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_5 i : mob5) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_6 i : mob6) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_7 i : mob7) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_8 i : mob8) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_9 i : mob9) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Monster_10 i : mob10) {
-			i.drawMonster(g, this, i.move.Point);
-		}
-		for (Tower_Circle i : Tcircle) {
-			i.drawTower(g, this);
-			for (Bullet_circle b : i.bullet) {
-				b.drawBcircle(g, this);
+		try {
+			for (Monster_1 i : mob1) {
+				i.drawMonster(g, this, i.move.Point);
 			}
-		}
-		for (Tower_Canon i : Tcanon) {
-			i.drawTower(g, this);
-			for (Bullet_canon b : i.bullet) {
-				b.drawBcircle(g, this);
+			for (Monster_2 i : mob2) {
+				i.drawMonster(g, this, i.move.Point);
 			}
-		}
-		for (Tower_Spark i : Tspark) {
-			i.drawTower(g, this);
-			for (Bullet_spark b : i.bullet) {
-				b.drawBcircle(g, this);
+			for (Monster_3 i : mob3) {
+				i.drawMonster(g, this, i.move.Point);
 			}
-		}
-		for (Tower_Spider i : Tspider) {
-			i.drawTower(g, this);
-			for (Bullet_web b : i.bullet) {
-				b.drawBcircle(g, this);
+			for (Monster_4 i : mob4) {
+				i.drawMonster(g, this, i.move.Point);
 			}
+			for (Monster_5 i : mob5) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_6 i : mob6) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_7 i : mob7) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_8 i : mob8) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_9 i : mob9) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_10 i : mob10) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Tower_Circle i : Tcircle) {
+				i.drawTower(g, this);
+				for (Bullet_circle b : i.bullet) {
+					b.drawBcircle(g, this);
+				}
+			}
+			for (Tower_Canon i : Tcanon) {
+				i.drawTower(g, this);
+				for (Bullet_canon b : i.bullet) {
+					b.drawBcircle(g, this);
+				}
+			}
+			for (Tower_Spark i : Tspark) {
+				i.drawTower(g, this);
+				for (Bullet_spark b : i.bullet) {
+					b.drawBcircle(g, this);
+				}
+			}
+			for (Tower_Spider i : Tspider) {
+				i.drawTower(g, this);
+				for (Bullet_web b : i.bullet) {
+					b.drawBcircle(g, this);
+				}
+			}
+		} catch (Exception e) {
+			repaint();
 		}
+		
 	}
 
 	@Override
