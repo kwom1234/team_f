@@ -35,7 +35,7 @@ public class Tower_Spark extends Tower_State {
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
-		Power = 50;
+		Power = 30;
 		Speed = 0;
 		stop = false;
 		PointInv();
@@ -109,7 +109,16 @@ public class Tower_Spark extends Tower_State {
 		return dest;
 	}
 
-	public void drawTower(Graphics g, Screen screen) {
+	public void drawTower(Graphics g, Screen screen) throws IOException {
+		if(Player_State.TowerSpark==1) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-spark2.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 45;
+		} else 	if(Player_State.TowerSpark==2) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-spark3.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 55;
+		}
 
 		if (MainFrame.count >= 1) {
 

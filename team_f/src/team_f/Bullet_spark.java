@@ -32,7 +32,6 @@ public class Bullet_spark extends Bullet_Spark_State {
 		start_y = 0;
 		
 		frame_size = 1;
-		Power = 0;
 		//HP=100;
 		stop = false;
 		//move.Copydata();
@@ -75,6 +74,11 @@ public class Bullet_spark extends Bullet_Spark_State {
 	}
 
 	public  void drawBcircle(Graphics g, Screen screen) {
+		if (Player_State.TowerSpark==1) {
+			index_x = 1;
+		}else if (Player_State.TowerSpark==2) {
+			index_x=2;
+		}
 
 		if (MainFrame.count >= 1) {
 				g.drawImage(Bul, (int)move.x,(int)move.y, // 위치

@@ -35,7 +35,7 @@ public class Tower_Canon extends Tower_State {
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
-		Power = 100;
+		Power = 80;
 		Speed = 0;
 		stop = false;
 		PointInv();
@@ -113,11 +113,11 @@ public class Tower_Canon extends Tower_State {
 		if(Player_State.TowerCannon==1) {
 			tower = ImageIO.read(new File("team_f/src/Resource/Tower-cannon2.png"));
 			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
-			Power = 110;
+			Power = 120;
 		} else 	if(Player_State.TowerCannon==2) {
 			tower = ImageIO.read(new File("team_f/src/Resource/Tower-cannon3.png"));
 			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
-			Power = 130;
+			Power = 150;
 		}
 
 		if (MainFrame.count >= 1) {

@@ -267,13 +267,21 @@ public class MainFrame extends JFrame implements ActionListener {
 				count++;
 				Gold -= 50;
 				GoldState_TextField.setText(Integer.toString(Gold));
-
 				}
 			}
 		});
 
 		JButton TowerUpgradeButton_1 = new JButton("Circle Upgrade");
 		TowerUpgradeButton_1.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-magic3.png")));
+		TowerUpgradeButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Gold >=100 && Player_State.TowerCircle<3) {
+				Gold -= 150;
+				GoldState_TextField.setText(Integer.toString(Gold));
+				Player_State.TowerCircle +=1;
+				}
+			}
+		});
 		//업그레이드 버튼 구현
 
 		JButton TowerUpgradeButton_2 = new JButton("Canon Upgrade");
@@ -281,7 +289,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerUpgradeButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Gold >=100 && Player_State.TowerCannon<3) {
-				Gold -= 100;
+				Gold -= 200;
 				GoldState_TextField.setText(Integer.toString(Gold));
 				Player_State.TowerCannon +=1;
 				}
@@ -289,24 +297,65 @@ public class MainFrame extends JFrame implements ActionListener {
 		});
 		JButton TowerUpgradeButton_3 = new JButton("Spider Upgrade");
 		TowerUpgradeButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider2.png")));
+		TowerUpgradeButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Gold >=100 && Player_State.TowerSpyder<3) {
+				Gold -= 180;
+				GoldState_TextField.setText(Integer.toString(Gold));
+				Player_State.TowerSpyder +=1;
+				}
+			}
+		});
 
 		JButton TowerUpgradeButton_4 = new JButton("Spark Upgrade");
 		TowerUpgradeButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spark2.png")));
-
+		TowerUpgradeButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Gold >=100 && Player_State.TowerSpark<3) {
+				Gold -= 130;
+				GoldState_TextField.setText(Integer.toString(Gold));
+				Player_State.TowerSpark +=1;
+				}
+			}
+		});
+		
 		JButton TowerSellButton_4 = new JButton("Spark Sell");
 		TowerSellButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(screen.Tspark.size() >0) {
+					Gold += 30;
+					mapdata[screen.Tspark.get(0).y][screen.Tspark.get(0).x] = 0;
+					screen.Tspark.remove(0);
+					GoldState_TextField.setText(Integer.toString(Gold));
+				}
 			}//판매 버튼구현
 		});
 
 		JButton TowerSellButton_3 = new JButton("Spider Sell");
 		TowerSellButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(screen.Tspider.size() >0) {
+					Gold += 30;
+					mapdata[screen.Tspider.get(0).y][screen.Tspider.get(0).x] = 0;
+					screen.Tspider.remove(0);
+					GoldState_TextField.setText(Integer.toString(Gold));	
+				}
 			}
 		});
 
 		JButton TowerSellButton_2 = new JButton("Canon Sell");
-
+		TowerSellButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(screen.Tcanon.size() >0) {
+					Gold += 30;
+					mapdata[screen.Tcanon.get(0).y][screen.Tcanon.get(0).x] = 0;
+					screen.Tcanon.remove(0);
+					GoldState_TextField.setText(Integer.toString(Gold));
+					
+				}
+			}
+		});
+		
 		JButton TowerSellButton_1 = new JButton("Circle Sell");
 		TowerSellButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

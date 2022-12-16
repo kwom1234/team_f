@@ -35,7 +35,7 @@ public class Tower_Spider extends Tower_State {
 		start_x = 0;// 그림상의 좌표
 		start_y = 0;
 		frame_size = 0;
-		Power = 50;
+		Power = 60;
 		Speed = 0;
 		stop = false;
 		PointInv();
@@ -108,7 +108,16 @@ public class Tower_Spider extends Tower_State {
 		return dest;
 	}
 
-	public void drawTower(Graphics g, Screen screen) {
+	public void drawTower(Graphics g, Screen screen) throws IOException {
+		if(Player_State.TowerSpyder==1) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-spider2.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 110;
+		} else 	if(Player_State.TowerSpyder==2) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-spider3.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 130;
+		}
 
 		if (MainFrame.count >= 1) {
 

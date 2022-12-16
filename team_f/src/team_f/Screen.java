@@ -299,6 +299,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.HP <= 0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob2.remove(i);
 						break;
 					}
@@ -353,11 +356,14 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 							}
 						}
 					}
+					i.move.MovePoint();
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob3.remove(i);
 						break;
 					}
-					i.move.MovePoint();
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) {
 						player.HP -= 1;
 						mob3.remove(i);
@@ -410,6 +416,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob4.remove(i);
 						break;
 					}
@@ -466,6 +475,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob5.remove(i);
 						break;
 					}
@@ -522,6 +534,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob6.remove(i);
 						break;
 					}
@@ -578,6 +593,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob7.remove(i);
 						break;
 					}
@@ -634,6 +652,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob8.remove(i);
 						break;
 					}
@@ -690,6 +711,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob9.remove(i);
 						break;
 					}
@@ -746,6 +770,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					if(i.HP<=0) {
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
 						mob10.remove(i);
 						break;
 					}
@@ -813,7 +840,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 			 Tcanon = new ArrayList<Tower_Canon>();
 			Tspark= new ArrayList<Tower_Spark>();
 			Tspider = new ArrayList<Tower_Spider>();
-		player.Gold=100;
+		player.Gold=150;
 		player.HP=3;
 		player.TowerCircle = 0;//강화단계
 		player.TowerCannon = 0;

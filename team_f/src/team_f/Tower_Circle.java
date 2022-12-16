@@ -109,7 +109,16 @@ public class Tower_Circle extends Tower_State {
 		return dest;
 	}
 
-	public void drawTower(Graphics g, Screen screen) {
+	public void drawTower(Graphics g, Screen screen) throws IOException {
+		if(Player_State.TowerCircle==1) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-magic2.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 80;
+		} else 	if(Player_State.TowerCircle==2) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-magic3.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 100;
+		}
 
 		if (MainFrame.count >= 1) {
 
