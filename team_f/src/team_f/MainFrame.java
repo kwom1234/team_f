@@ -275,7 +275,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerUpgradeButton_1.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-magic3.png")));
 		TowerUpgradeButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Gold >=100 && Player_State.TowerCircle<3) {
+				if(Gold >=150 && Player_State.TowerCircle<3) {
 				Gold -= 150;
 				GoldState_TextField.setText(Integer.toString(Gold));
 				Player_State.TowerCircle +=1;
@@ -288,7 +288,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerUpgradeButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon2.png")));
 		TowerUpgradeButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Gold >=100 && Player_State.TowerCannon<3) {
+				if(Gold >=200 && Player_State.TowerCannon<3) {
 				Gold -= 200;
 				GoldState_TextField.setText(Integer.toString(Gold));
 				Player_State.TowerCannon +=1;
@@ -299,7 +299,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerUpgradeButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider2.png")));
 		TowerUpgradeButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Gold >=100 && Player_State.TowerSpyder<3) {
+				if(Gold >=180 && Player_State.TowerSpyder<3) {
 				Gold -= 180;
 				GoldState_TextField.setText(Integer.toString(Gold));
 				Player_State.TowerSpyder +=1;
@@ -311,7 +311,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		TowerUpgradeButton_4.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spark2.png")));
 		TowerUpgradeButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Gold >=100 && Player_State.TowerSpark<3) {
+				if(Gold >=130 && Player_State.TowerSpark<3) {
 				Gold -= 130;
 				GoldState_TextField.setText(Integer.toString(Gold));
 				Player_State.TowerSpark +=1;
