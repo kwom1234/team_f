@@ -32,7 +32,7 @@ public class Bullet_canon extends Bullet_Canon_State {
 		start_y = 0;
 		
 		frame_size = 1;
-		Power = 0;
+	
 		//HP=100;
 		stop = false;
 		//move.Copydata();

@@ -14,7 +14,7 @@ public class MoveMonster {
 	int[][] MoveData = new int[16][24];
 	int count = 0;
 	int Move = 0;// 0일때 X방향 1일때 -Y방향 2일때 +Y방향
-	int Point[] = new int[2];
+	int Point[] = new int[2]; //현제좌표 
 	int X,Y;
 	public void Copydata() {
 		for (int i = 0; i < 16; i++) {
@@ -36,7 +36,7 @@ public class MoveMonster {
 	}
 
 	public void MovePoint() {
-		if (count == 0) {
+		if (count == 0) { // 카운터가 0이면 다음 줄 탐색
 			MoveData[NextY][NextX]=2;
 		/*	for (int i = 0; i < 16; i++) {
 				for (int j = 0; j < 24; j++) {

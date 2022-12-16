@@ -67,7 +67,7 @@ public class Tower_Canon extends Tower_State {
 	public void PointInv() {
 		x = (int) (Math.random() * (16 - 6 + 1) + 6); // 랜덤 x좌표
 		y = (int) (Math.random() * (14 - 4 + 1) + 4); // 랜덤 y좌표
-		if ((x % 2) == 1) {
+		if ((x % 2) == 1) {// 안겹치게 그리기위해 좌표설정
 			x = x - 1;
 		}
 		if ((y % 2) == 1) {

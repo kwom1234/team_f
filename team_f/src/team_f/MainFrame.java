@@ -68,7 +68,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public void restart() {
+	public void restart() {// 게임 재시작 
 		startImage();
 		frame.dispose();
 		window = new MainFrame();
@@ -76,7 +76,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 
 	public void startImage() {
-		Start = new JFrame();
+		Start = new JFrame(); //게임 시작 프레임 
 		Start.setTitle("타워디펜스");
 		Start.setBounds(100, 100, 730, 640);
 		Start.getContentPane().add(loadscreen, BorderLayout.CENTER);
@@ -205,7 +205,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	}
 
-	public void initialize() {
+	public void initialize() { //실제 게임 화면
 		this.screen = new Screen();
 		frame = new JFrame();
 		frame.getContentPane().add(screen, BorderLayout.CENTER);
@@ -217,13 +217,13 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		JButton TowerCreatButton_1 = new JButton("Circle Creat");
 		TowerCreatButton_1.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-magic2.png")));
-		TowerCreatButton_1.addActionListener(new ActionListener() {
+		TowerCreatButton_1.addActionListener(new ActionListener() { //타워 설치눌렀을때 
 			public void actionPerformed(ActionEvent e) {
 				if(Gold >=50) {
 					screen.addTowerCilcle();
 					count++;
 					Gold -= 50;
-					GoldState_TextField.setText(Integer.toString(Gold));
+					GoldState_TextField.setText(Integer.toString(Gold)); //골드가 바뀔떄마다 넣어줌
 
 				}
 					}
@@ -273,7 +273,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		JButton TowerUpgradeButton_1 = new JButton("Circle Upgrade");
 		TowerUpgradeButton_1.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-magic3.png")));
-
+		//업그레이드 버튼 구현
 		JButton TowerUpgradeButton_2 = new JButton("Canon Upgrade");
 		TowerUpgradeButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon2.png")));
 
@@ -286,7 +286,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		JButton TowerSellButton_4 = new JButton("Spark Sell");
 		TowerSellButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+			}//판매 버튼구현
 		});
 
 		JButton TowerSellButton_3 = new JButton("Spider Sell");
@@ -303,7 +303,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			}
 		});
 
-		GoldState_TextField = new JTextField();
+		GoldState_TextField = new JTextField(); //골드 택스트바
 		GoldState_TextField.setEditable(false);
 		GoldState_TextField.setText(Integer.toString(Gold));
 		GoldState_TextField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -381,7 +381,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		ImageIcon iconClose = new ImageIcon(getClass().getClassLoader().getResource("Resource/tower.png"));
 		iconClose = new ImageIcon(iconClose.getImage().getScaledInstance(110, 110, Image.SCALE_SMOOTH));
-		frame.setTitle("타워디펜스");
+		frame.setTitle("타워디펜스"); 
 		frame.setBounds(100, 100, 730, 690);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

@@ -25,15 +25,15 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	public static Dimension dim;
 	public static Image offscreen;
 	public static Graphics bufferGraphics;
-	Stage map = new Stage();
-	Life life = new Life();
-	int nextMobT = 50;
+	Stage map = new Stage(); //배경이미지와 길
+	Life life = new Life(); //라이프 클래스 호출 하트그리는 부분
+	int nextMobT = 50; //몬스터부분
 	int NextC = 0;
-	int count = 0;
-	Player_State player = new Player_State();
-	private Point Bpoint = new Point();
-	public static int[] mousePoint = new int[2];
-	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>();
+	int count = 0; //몬스터 부분
+	Player_State player = new Player_State(); //플레이어의 상태 
+	private Point Bpoint = new Point(); //마우스 클릭 
+	public static int[] mousePoint = new int[2]; //리스트로 저장
+	public static ArrayList<Tower_Circle> Tcircle = new ArrayList<Tower_Circle>(); //타워 한개당 어레이리스트에 저장
 	public static ArrayList<Tower_Canon> Tcanon = new ArrayList<Tower_Canon>();
 	public static ArrayList<Tower_Spark> Tspark= new ArrayList<Tower_Spark>();
 	public static ArrayList<Tower_Spider> Tspider = new ArrayList<Tower_Spider>();
@@ -75,9 +75,9 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 
 	public Screen() {
 
-		addMouseListener(this);
-		addMouseMotionListener(this);
-		mob1.add(new Monster_1());
+		addMouseListener(this); //마우스 위치 받는 리스너 하나 호출 
+		addMouseMotionListener(this); //
+		//mob1.add(new Monster_1()); //
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 
@@ -132,8 +132,8 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 				counting();
 			}
 		}, 0, 1);
-		Timer Bullet_timer = new Timer();
-		Bullet_timer.schedule(new TimerTask() {
+		Timer Bullet_timer_circle = new Timer();
+		Bullet_timer_circle.schedule(new TimerTask() {
 
 			@Override
 			public void run() {
@@ -141,18 +141,52 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 				for (Tower_Circle t : Tcircle) {
 					t.addBullet();
 				}
-				for (Tower_Canon t : Tcanon) {
-					t.addBullet();
-				}
-				for (Tower_Spark t : Tspark) {
-					t.addBullet();
-				}
-				for (Tower_Spider t : Tspider) {
-					t.addBullet();
-				}
+
 			}
 
 		}, 0, 1000);
+		Timer Bullet_timer_cannon = new Timer();
+		Bullet_timer_cannon.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+
+				for (Tower_Canon t : Tcanon) {
+					t.addBullet();
+				}
+	
+			}
+
+		}, 0, 2000);
+		Timer Bullet_timer_spyder= new Timer();
+		Bullet_timer_spyder.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+
+				for (Tower_Spider t : Tspider) {
+					t.addBullet();
+				}
+	
+			}
+
+		}, 0, 1500);
+		Timer Bullet_timer_spark= new Timer();
+		Bullet_timer_spark.schedule(new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+
+				for (Tower_Spark t : Tspark) {
+					t.addBullet();
+				}
+	
+			}
+
+		}, 0, 800);
 
 		Timer MoveTimer = new Timer();
 		MoveTimer.schedule(new TimerTask() {
@@ -165,10 +199,10 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 				for (Monster_1 i : mob1) {// 각 몬스터마다 이동시키기
 					for (Tower_Circle t : Tcircle) {
 						for (Bullet_circle c : t.bullet) {
-							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
 									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
-								t.bullet.remove(c);
-								i.HP -= t.Power;
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
 								break;
 							}
 						}
@@ -204,8 +238,8 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						}
 					}
 					i.move.MovePoint();
-					if (i.HP <= 0) {
-						Gold += 10;
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += 10; //골드 추가 
 						System.out.println(Gold);
 						GoldState_TextField.setText(Integer.toString(Gold));
 						mob1.remove(i);
@@ -745,7 +779,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						mob9.add(new Monster_9());
 					} else if (count < 500) {
 						mob10.add(new Monster_10());
-					} else if( count > 500) {
+					} else if( count > 560) {
 						restart();
 					}
 					NextC = 0;
@@ -790,7 +824,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	}
 	private int countNumber = 0;
 
-	public void counting() {
+	public void counting() { // 타워부분 
 		this.countNumber++;
 	}
 
@@ -822,11 +856,11 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	public void update(Graphics g) {
 		// TODO Auto-generated method stub
 		render(bufferGraphics);
-		g.drawImage(offscreen, 0, 0, this);
+		g.drawImage(offscreen, 0, 0, this); //실제로 그려지는 부분
 	}
 
-	public void render(Graphics g) {
-		g.clearRect(0, 0, 720, 480);
+	public void render(Graphics g) { //버퍼이미지에 그릴 부분 
+		g.clearRect(0, 0, 720, 490);
 		// 배경
 		map.background(g);
 		map.map(g);
