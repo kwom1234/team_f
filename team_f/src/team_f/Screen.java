@@ -247,6 +247,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
 						// 삭제
+						player.HP -=1;
 						mob1.remove(i);
 						break;// 포문이 지속될시 오류
 					}

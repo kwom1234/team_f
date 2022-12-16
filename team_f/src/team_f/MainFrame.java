@@ -41,6 +41,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import java.awt.Font;
 import static team_f.Player_State.Gold;
+import static team_f.Stage.mapdata;
 import static team_f.Main.window;
 
 public class MainFrame extends JFrame implements ActionListener {
@@ -309,6 +310,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		JButton TowerSellButton_1 = new JButton("Circle Sell");
 		TowerSellButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(screen.Tcircle.size() >0) {
+					Gold += 30;
+					mapdata[screen.Tcircle.get(0).y][screen.Tcircle.get(0).x] = 0;
+					screen.Tcircle.remove(0);
+					GoldState_TextField.setText(Integer.toString(Gold));
+					
+				}
 			}
 		});
 

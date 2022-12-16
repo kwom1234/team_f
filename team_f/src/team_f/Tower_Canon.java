@@ -20,8 +20,8 @@ import javax.imageio.ImageIO;
 
 public class Tower_Canon extends Tower_State {
 	
-	public static int x; // 랜덤 x좌표
-	public static int y; // 랜덤 y좌표
+	int x; // 랜덤 x좌표
+	int y; // 랜덤 y좌표
 	int xx; //
 	int yy;
 	int w; //
