@@ -30,6 +30,7 @@ public class Tower_Canon extends Tower_State {
 	public Tower_Canon() {
 		// this.x= (int) (Math.random() *23);
 		// this.y=(int) (Math.random() *15);
+		
 		index_x = 0;
 		index_y = 0;
 		start_x = 0;// 그림상의 좌표
@@ -109,8 +110,12 @@ public class Tower_Canon extends Tower_State {
 		return dest;
 	}
 
-	public void drawTower(Graphics g, Screen screen) {
-
+	public void drawTower(Graphics g, Screen screen) throws IOException {
+		if(Player_State.TowerCannon ==2) {
+			tower = ImageIO.read(new File("team_f/src/Resource/Tower-cannon2.png"));
+			tower = TransformColorToTransparency(tower, new Color(255, 255, 255));
+			Power = 110; 
+		}
 		if (MainFrame.count >= 1) {
 
 			

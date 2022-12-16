@@ -74,8 +74,10 @@ public class Bullet_canon extends Bullet_Canon_State {
 		return dest;
 	}
 
-	public  void drawBcircle(Graphics g, Screen screen) {
-
+	public  void drawBcircle(Graphics g, Screen screen) throws IOException {
+		if(Player_State.TowerCannon ==2) {
+			index_x = 1;
+		}
 		if (MainFrame.count >= 1) {
 				g.drawImage(Bul, (int)move.x,(int)move.y, // 위치
 						(int)move.x + width + 30, (int)move.y + height + 30, // 크기

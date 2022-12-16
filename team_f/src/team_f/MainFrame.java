@@ -276,7 +276,15 @@ public class MainFrame extends JFrame implements ActionListener {
 		//업그레이드 버튼 구현
 		JButton TowerUpgradeButton_2 = new JButton("Canon Upgrade");
 		TowerUpgradeButton_2.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-cannon2.png")));
-
+		TowerUpgradeButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(Gold >=100) {
+				Gold -= 100;
+				GoldState_TextField.setText(Integer.toString(Gold));
+				Player_State.TowerCannon +=2;
+				}
+			}
+		});
 		JButton TowerUpgradeButton_3 = new JButton("Spider Upgrade");
 		TowerUpgradeButton_3.setIcon(new ImageIcon(MainFrame.class.getResource("/Resource/Tower-spider2.png")));
 
