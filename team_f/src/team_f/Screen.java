@@ -239,7 +239,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					i.move.MovePoint();
 					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
-						Gold += 10; //골드 추가 
+						Gold += i.drop; //골드 추가 
 						System.out.println(Gold);
 						GoldState_TextField.setText(Integer.toString(Gold));
 						mob1.remove(i);
@@ -247,7 +247,6 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 					}
 					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
 						// 삭제
-						player.HP -= 1;
 						mob1.remove(i);
 						break;// 포문이 지속될시 오류
 					}
