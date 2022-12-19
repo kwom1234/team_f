@@ -49,7 +49,16 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 	ArrayList<Monster_8> mob8 = new ArrayList<Monster_8>();
 	ArrayList<Monster_9> mob9 = new ArrayList<Monster_9>();
 	ArrayList<Monster_10> mob10 = new ArrayList<Monster_10>();
-
+	ArrayList<Monster_11> mob11 = new ArrayList<Monster_11>();
+	ArrayList<Monster_12> mob12 = new ArrayList<Monster_12>();
+	ArrayList<Monster_13> mob13 = new ArrayList<Monster_13>();
+	ArrayList<Monster_14> mob14 = new ArrayList<Monster_14>();
+	ArrayList<Monster_15> mob15 = new ArrayList<Monster_15>();
+	ArrayList<Monster_16> mob16 = new ArrayList<Monster_16>();
+	ArrayList<Monster_17> mob17 = new ArrayList<Monster_17>();
+	ArrayList<Monster_18> mob18 = new ArrayList<Monster_18>();
+	ArrayList<Monster_19> mob19 = new ArrayList<Monster_19>();
+	ArrayList<Monster_20> mob20 = new ArrayList<Monster_20>();
 	// ImageIcon background = new
 	// ImageIcon(getClass().getClassLoader().getResource("Resource/eraser.png"));
 	public void addTowerCilcle() {
@@ -783,6 +792,579 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						break;
 					}
 				}
+				
+				for (Monster_11 i : mob11) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob11.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob11.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				////////////
+				for (Monster_12 i : mob12) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob12.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob12.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				
+				////////////
+				for (Monster_13 i : mob13) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob13.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob13.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				////////////
+				for (Monster_14 i : mob14) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob14.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob14.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				////////////
+				for (Monster_15 i : mob15) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob15.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob15.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				///////////
+				for (Monster_16 i : mob16) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob16.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob16.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				//////////
+				for (Monster_17 i : mob17) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob17.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob17.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				///////////
+				for (Monster_18 i : mob18) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob18.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob18.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				///////////
+				for (Monster_19 i : mob19) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob19.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob19.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				////////////
+				for (Monster_20 i : mob20) {// 각 몬스터마다 이동시키기
+					for (Tower_Circle t : Tcircle) {
+						for (Bullet_circle c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30 //몹이랑 충돌을 했는가?
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c); //몹이랑 충돌시 총알 지우기 
+								i.HP -= t.Power; //몬스터의 HP 
+								break;
+							}
+						}
+					}
+					for (Tower_Canon t : Tcanon) {
+						for (Bullet_canon c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spark t : Tspark) {
+						for (Bullet_spark c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					for (Tower_Spider t : Tspider) {
+						for (Bullet_web c : t.bullet) {
+							if (((int) c.move.x - i.move.Point[0]) <= 30 && ((int) c.move.y - i.move.Point[1]) <= 30
+									&&((int) c.move.x - i.move.Point[0]) >= 0 && ((int) c.move.y - i.move.Point[1]) >= 0) {
+								t.bullet.remove(c);
+								i.HP -= t.Power;
+								break;
+							}
+						}
+					}
+					i.move.MovePoint();
+					if (i.HP <= 0) { //몬스터의 0이되었을 경우 
+						Gold += i.drop; //골드 추가 
+						System.out.println(Gold);
+						GoldState_TextField.setText(Integer.toString(Gold));
+						mob20.remove(i);
+						break;
+					}
+					if (i.move.Point[0] == MoveMonster.EndX * 30 && i.move.Point[1] == MoveMonster.EndY * 30 - 20) { // 만약에
+						// 삭제
+						player.HP -=1;
+						mob20.remove(i);
+						break;// 포문이 지속될시 오류
+					}
+				}
+				
+				
 				NextC++;
 				if (NextC == nextMobT) {
 					count++;
@@ -806,9 +1388,40 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 						mob9.add(new Monster_9());
 					} else if (count < 500) {
 						mob10.add(new Monster_10());
-					} else if( count > 560) {
+					} else if( count < 550) {
+						mob11.add(new Monster_11());
+					}
+					else if( count < 600) {
+						mob12.add(new Monster_12());
+					}
+					else if( count < 650) {
+						mob13.add(new Monster_13());
+					}
+					else if( count < 700) {
+						mob14.add(new Monster_14());
+					}
+					else if( count < 750) {
+						mob15.add(new Monster_15());
+					}
+					else if( count < 800) {
+						mob16.add(new Monster_16());
+					}
+					else if( count < 850) {
+						mob17.add(new Monster_17());
+					}
+					else if( count < 900) {
+						mob18.add(new Monster_18());
+					}
+					else if( count < 950) {
+						mob19.add(new Monster_19());
+					}
+					else if( count < 1000) {
+						mob20.add(new Monster_20());
+					}
+					else if(count>1060) {
 						restart();
 					}
+					
 					NextC = 0;
 				}
 				if(player.HP <=0) {
@@ -836,6 +1449,18 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 		 mob8 = new ArrayList<Monster_8>();
 		 mob9 = new ArrayList<Monster_9>();
 		 mob10 = new ArrayList<Monster_10>();
+		 mob10 = new ArrayList<Monster_10>();
+		 mob11 = new ArrayList<Monster_11>();
+		mob12 = new ArrayList<Monster_12>();
+		mob13 = new ArrayList<Monster_13>();
+		 mob14 = new ArrayList<Monster_14>();
+		 mob15 = new ArrayList<Monster_15>();
+		 mob16 = new ArrayList<Monster_16>();
+		 mob17 = new ArrayList<Monster_17>();
+		 mob18 = new ArrayList<Monster_18>();
+		 mob19 = new ArrayList<Monster_19>();
+		 mob20 = new ArrayList<Monster_20>();
+			// ImageIcon background = new
 			Tcircle = new ArrayList<Tower_Circle>();
 			 Tcanon = new ArrayList<Tower_Canon>();
 			Tspark= new ArrayList<Tower_Spark>();
@@ -921,6 +1546,36 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 				i.drawMonster(g, this, i.move.Point);
 			}
 			for (Monster_10 i : mob10) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_11 i : mob11) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_12 i : mob12) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_13 i : mob13) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_14 i : mob14) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_15 i : mob15) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_16 i : mob16) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_17 i : mob17) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_18 i : mob18) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_19 i : mob19) {
+				i.drawMonster(g, this, i.move.Point);
+			}
+			for (Monster_20 i : mob20) {
 				i.drawMonster(g, this, i.move.Point);
 			}
 			for (Tower_Circle i : Tcircle) {
