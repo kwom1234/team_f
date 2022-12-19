@@ -1439,6 +1439,7 @@ public class Screen extends Canvas implements Runnable, MouseListener, MouseMoti
 
 	}
 	public void restart() {
+		count=0;
 	 mob1 = new ArrayList<Monster_1>();
 	 mob2 = new ArrayList<Monster_2>();
 	mob3 = new ArrayList<Monster_3>();
